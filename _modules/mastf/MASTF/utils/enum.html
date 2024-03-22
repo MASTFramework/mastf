@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mastf.MASTF.utils.enum &mdash; MAST-Framework 0.0.2-alpha documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=aebd9fbb"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            MAST-Framework
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/docker_setup.html">Setup with Docker Compose</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../intro/docker_setup.html#local-development">Local Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../intro/docker_setup.html#service-configuration">Service Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../intro/docker_setup.html#database">Database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../intro/docker_setup.html#broker">Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../intro/docker_setup.html#nginx">Nginx</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../intro/docker_setup.html#configuration-steps">Configuration Steps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../intro/docker_setup.html#environment-options">Environment Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../intro/docker_setup.html#django">Django</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../intro/docker_setup.html#DJANGO_DEBUG"><code class="docutils literal notranslate"><span class="pre">DJANGO_DEBUG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../intro/docker_setup.html#DJANGO_SECRET_KEY"><code class="docutils literal notranslate"><span class="pre">DJANGO_SECRET_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../intro/docker_setup.html#DJANGO_ALLOWED_HOSTS"><code class="docutils literal notranslate"><span class="pre">DJANGO_ALLOWED_HOSTS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../intro/docker_setup.html#DJANGO_CSRF_TRUSTED_ORIGINS"><code class="docutils literal notranslate"><span class="pre">DJANGO_CSRF_TRUSTED_ORIGINS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../intro/docker_setup.html#DJANGO_SESSION_EXPIRE_AT_BROWSER_CLOSE"><code class="docutils literal notranslate"><span class="pre">DJANGO_SESSION_EXPIRE_AT_BROWSER_CLOSE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../intro/docker_setup.html#DJANGO_SESSION_COOKIE_AGE"><code class="docutils literal notranslate"><span class="pre">DJANGO_SESSION_COOKIE_AGE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../intro/docker_setup.html#DJANGO_HTTPS"><code class="docutils literal notranslate"><span class="pre">DJANGO_HTTPS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../intro/docker_setup.html#DJANGO_STORAGE_URL"><code class="docutils literal notranslate"><span class="pre">DJANGO_STORAGE_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../intro/docker_setup.html#DJANGO_STORAGE_ROOT"><code class="docutils literal notranslate"><span class="pre">DJANGO_STORAGE_ROOT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../intro/docker_setup.html#DJANGO_PORT"><code class="docutils literal notranslate"><span class="pre">DJANGO_PORT</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/dev_setup.html">Development Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/scaling.html">Scaling Container Images</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../intro/scaling.html#scaling-django-application-containers">Scaling Django Application Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../intro/scaling.html#scaling-celery-worker-instances">Scaling Celery Worker Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../intro/scaling.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ref/guide.html">Visual Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ref/guide.html#projects">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ref/guide.html#bundles">Bundles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ref/guide.html#scantask-design">ScanTask design</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ref/models/index.html">Model Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ref/models/base_models.html">Core Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.namespace"><code class="docutils literal notranslate"><span class="pre">namespace</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Environment"><code class="docutils literal notranslate"><span class="pre">Environment</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Environment.allow_registration"><code class="docutils literal notranslate"><span class="pre">Environment.allow_registration</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Environment.allow_teams"><code class="docutils literal notranslate"><span class="pre">Environment.allow_teams</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Environment.env"><code class="docutils literal notranslate"><span class="pre">Environment.env()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Environment.env_id"><code class="docutils literal notranslate"><span class="pre">Environment.env_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Environment.first_start"><code class="docutils literal notranslate"><span class="pre">Environment.first_start</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Environment.max_bundles"><code class="docutils literal notranslate"><span class="pre">Environment.max_bundles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Environment.max_projects"><code class="docutils literal notranslate"><span class="pre">Environment.max_projects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Environment.max_teams"><code class="docutils literal notranslate"><span class="pre">Environment.max_teams</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Team"><code class="docutils literal notranslate"><span class="pre">Team</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Team.get"><code class="docutils literal notranslate"><span class="pre">Team.get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Team.get_by_owner"><code class="docutils literal notranslate"><span class="pre">Team.get_by_owner()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Team.name"><code class="docutils literal notranslate"><span class="pre">Team.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Team.owner"><code class="docutils literal notranslate"><span class="pre">Team.owner</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Team.users"><code class="docutils literal notranslate"><span class="pre">Team.users</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Team.visibility"><code class="docutils literal notranslate"><span class="pre">Team.visibility</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Project"><code class="docutils literal notranslate"><span class="pre">Project</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Project.dir"><code class="docutils literal notranslate"><span class="pre">Project.dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Project.directory"><code class="docutils literal notranslate"><span class="pre">Project.directory</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Project.get_by_user"><code class="docutils literal notranslate"><span class="pre">Project.get_by_user()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Project.inspection_type"><code class="docutils literal notranslate"><span class="pre">Project.inspection_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Project.name"><code class="docutils literal notranslate"><span class="pre">Project.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Project.owner"><code class="docutils literal notranslate"><span class="pre">Project.owner</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Project.project_uuid"><code class="docutils literal notranslate"><span class="pre">Project.project_uuid</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Project.risk_level"><code class="docutils literal notranslate"><span class="pre">Project.risk_level</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Project.stats"><code class="docutils literal notranslate"><span class="pre">Project.stats()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Project.tags"><code class="docutils literal notranslate"><span class="pre">Project.tags</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Project.team"><code class="docutils literal notranslate"><span class="pre">Project.team</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Project.visibility"><code class="docutils literal notranslate"><span class="pre">Project.visibility</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.File"><code class="docutils literal notranslate"><span class="pre">File</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.File.file_name"><code class="docutils literal notranslate"><span class="pre">File.file_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.File.file_path"><code class="docutils literal notranslate"><span class="pre">File.file_path</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.File.file_size"><code class="docutils literal notranslate"><span class="pre">File.file_size</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.File.internal_name"><code class="docutils literal notranslate"><span class="pre">File.internal_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.File.md5"><code class="docutils literal notranslate"><span class="pre">File.md5</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.File.sha1"><code class="docutils literal notranslate"><span class="pre">File.sha1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.File.sha256"><code class="docutils literal notranslate"><span class="pre">File.sha256</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Account"><code class="docutils literal notranslate"><span class="pre">Account</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Bundle"><code class="docutils literal notranslate"><span class="pre">Bundle</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Bundle.bundle_id"><code class="docutils literal notranslate"><span class="pre">Bundle.bundle_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Bundle.get_by_owner"><code class="docutils literal notranslate"><span class="pre">Bundle.get_by_owner()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Bundle.name"><code class="docutils literal notranslate"><span class="pre">Bundle.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Bundle.owner"><code class="docutils literal notranslate"><span class="pre">Bundle.owner</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Bundle.projects"><code class="docutils literal notranslate"><span class="pre">Bundle.projects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Bundle.risk_level"><code class="docutils literal notranslate"><span class="pre">Bundle.risk_level</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Bundle.stats"><code class="docutils literal notranslate"><span class="pre">Bundle.stats()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/base_models.html#mastf.MASTF.models.Bundle.tags"><code class="docutils literal notranslate"><span class="pre">Bundle.tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ref/models/scan_models.html">Scan Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Scan"><code class="docutils literal notranslate"><span class="pre">Scan</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Scan.end_date"><code class="docutils literal notranslate"><span class="pre">Scan.end_date</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Scan.file"><code class="docutils literal notranslate"><span class="pre">Scan.file</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Scan.files"><code class="docutils literal notranslate"><span class="pre">Scan.files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Scan.finished"><code class="docutils literal notranslate"><span class="pre">Scan.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Scan.initiator"><code class="docutils literal notranslate"><span class="pre">Scan.initiator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Scan.is_active"><code class="docutils literal notranslate"><span class="pre">Scan.is_active</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Scan.last_scan"><code class="docutils literal notranslate"><span class="pre">Scan.last_scan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Scan.origin"><code class="docutils literal notranslate"><span class="pre">Scan.origin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Scan.project"><code class="docutils literal notranslate"><span class="pre">Scan.project</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Scan.risk_level"><code class="docutils literal notranslate"><span class="pre">Scan.risk_level</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Scan.scan_type"><code class="docutils literal notranslate"><span class="pre">Scan.scan_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Scan.scan_uuid"><code class="docutils literal notranslate"><span class="pre">Scan.scan_uuid</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Scan.source"><code class="docutils literal notranslate"><span class="pre">Scan.source</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Scan.start_date"><code class="docutils literal notranslate"><span class="pre">Scan.start_date</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Scan.status"><code class="docutils literal notranslate"><span class="pre">Scan.status</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.ScanTask"><code class="docutils literal notranslate"><span class="pre">ScanTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.ScanTask.active"><code class="docutils literal notranslate"><span class="pre">ScanTask.active</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.ScanTask.active_tasks"><code class="docutils literal notranslate"><span class="pre">ScanTask.active_tasks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.ScanTask.celery_id"><code class="docutils literal notranslate"><span class="pre">ScanTask.celery_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.ScanTask.finish_scan"><code class="docutils literal notranslate"><span class="pre">ScanTask.finish_scan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.ScanTask.name"><code class="docutils literal notranslate"><span class="pre">ScanTask.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.ScanTask.scan"><code class="docutils literal notranslate"><span class="pre">ScanTask.scan</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.ScanTask.scanner"><code class="docutils literal notranslate"><span class="pre">ScanTask.scanner</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.ScanTask.task_uuid"><code class="docutils literal notranslate"><span class="pre">ScanTask.task_uuid</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Certificate"><code class="docutils literal notranslate"><span class="pre">Certificate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Certificate.hash_algorithm"><code class="docutils literal notranslate"><span class="pre">Certificate.hash_algorithm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Certificate.issuer"><code class="docutils literal notranslate"><span class="pre">Certificate.issuer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Certificate.serial_number"><code class="docutils literal notranslate"><span class="pre">Certificate.serial_number</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Certificate.sha1"><code class="docutils literal notranslate"><span class="pre">Certificate.sha1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Certificate.sha256"><code class="docutils literal notranslate"><span class="pre">Certificate.sha256</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Certificate.signature_algorithm"><code class="docutils literal notranslate"><span class="pre">Certificate.signature_algorithm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Certificate.subject"><code class="docutils literal notranslate"><span class="pre">Certificate.subject</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Certificate.version"><code class="docutils literal notranslate"><span class="pre">Certificate.version</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ref/models/scan_models.html#mastf.MASTF.models.Details"><code class="docutils literal notranslate"><span class="pre">Details</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ref/models/finding_models.html">Finding Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Snippet"><code class="docutils literal notranslate"><span class="pre">Snippet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Snippet.file_name"><code class="docutils literal notranslate"><span class="pre">Snippet.file_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Snippet.file_size"><code class="docutils literal notranslate"><span class="pre">Snippet.file_size</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Snippet.language"><code class="docutils literal notranslate"><span class="pre">Snippet.language</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Snippet.lines"><code class="docutils literal notranslate"><span class="pre">Snippet.lines</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Snippet.sys_path"><code class="docutils literal notranslate"><span class="pre">Snippet.sys_path</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.FindingTemplate"><code class="docutils literal notranslate"><span class="pre">FindingTemplate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.FindingTemplate.article"><code class="docutils literal notranslate"><span class="pre">FindingTemplate.article</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.FindingTemplate.default_severity"><code class="docutils literal notranslate"><span class="pre">FindingTemplate.default_severity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.FindingTemplate.description"><code class="docutils literal notranslate"><span class="pre">FindingTemplate.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.FindingTemplate.internal_id"><code class="docutils literal notranslate"><span class="pre">FindingTemplate.internal_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.FindingTemplate.is_contextual"><code class="docutils literal notranslate"><span class="pre">FindingTemplate.is_contextual</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.FindingTemplate.is_html"><code class="docutils literal notranslate"><span class="pre">FindingTemplate.is_html</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.FindingTemplate.make_internal_id"><code class="docutils literal notranslate"><span class="pre">FindingTemplate.make_internal_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.FindingTemplate.make_uuid"><code class="docutils literal notranslate"><span class="pre">FindingTemplate.make_uuid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.FindingTemplate.meta_cvss"><code class="docutils literal notranslate"><span class="pre">FindingTemplate.meta_cvss</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.FindingTemplate.meta_cwe"><code class="docutils literal notranslate"><span class="pre">FindingTemplate.meta_cwe</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.FindingTemplate.meta_masvs"><code class="docutils literal notranslate"><span class="pre">FindingTemplate.meta_masvs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.FindingTemplate.mitigation"><code class="docutils literal notranslate"><span class="pre">FindingTemplate.mitigation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.FindingTemplate.risk"><code class="docutils literal notranslate"><span class="pre">FindingTemplate.risk</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.FindingTemplate.template_id"><code class="docutils literal notranslate"><span class="pre">FindingTemplate.template_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.FindingTemplate.title"><code class="docutils literal notranslate"><span class="pre">FindingTemplate.title</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.AbstractBaseFinding"><code class="docutils literal notranslate"><span class="pre">AbstractBaseFinding</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.AbstractBaseFinding.discovery_date"><code class="docutils literal notranslate"><span class="pre">AbstractBaseFinding.discovery_date</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.AbstractBaseFinding.finding_id"><code class="docutils literal notranslate"><span class="pre">AbstractBaseFinding.finding_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.AbstractBaseFinding.scan"><code class="docutils literal notranslate"><span class="pre">AbstractBaseFinding.scan</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.AbstractBaseFinding.scanner"><code class="docutils literal notranslate"><span class="pre">AbstractBaseFinding.scanner</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.AbstractBaseFinding.severity"><code class="docutils literal notranslate"><span class="pre">AbstractBaseFinding.severity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.AbstractBaseFinding.snippet"><code class="docutils literal notranslate"><span class="pre">AbstractBaseFinding.snippet</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.AbstractBaseFinding.stats"><code class="docutils literal notranslate"><span class="pre">AbstractBaseFinding.stats()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.AbstractBaseFinding.template"><code class="docutils literal notranslate"><span class="pre">AbstractBaseFinding.template</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Finding"><code class="docutils literal notranslate"><span class="pre">Finding</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Finding.custom_text"><code class="docutils literal notranslate"><span class="pre">Finding.custom_text</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Finding.discovery_date"><code class="docutils literal notranslate"><span class="pre">Finding.discovery_date</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Finding.finding_id"><code class="docutils literal notranslate"><span class="pre">Finding.finding_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Finding.is_custom"><code class="docutils literal notranslate"><span class="pre">Finding.is_custom</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Finding.make_uuid"><code class="docutils literal notranslate"><span class="pre">Finding.make_uuid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Finding.scan"><code class="docutils literal notranslate"><span class="pre">Finding.scan</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Finding.scanner"><code class="docutils literal notranslate"><span class="pre">Finding.scanner</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Finding.severity"><code class="docutils literal notranslate"><span class="pre">Finding.severity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Finding.snippet"><code class="docutils literal notranslate"><span class="pre">Finding.snippet</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Finding.template"><code class="docutils literal notranslate"><span class="pre">Finding.template</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Vulnerability"><code class="docutils literal notranslate"><span class="pre">Vulnerability</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Vulnerability.discovery_date"><code class="docutils literal notranslate"><span class="pre">Vulnerability.discovery_date</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Vulnerability.finding_id"><code class="docutils literal notranslate"><span class="pre">Vulnerability.finding_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Vulnerability.make_uuid"><code class="docutils literal notranslate"><span class="pre">Vulnerability.make_uuid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Vulnerability.scan"><code class="docutils literal notranslate"><span class="pre">Vulnerability.scan</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Vulnerability.scanner"><code class="docutils literal notranslate"><span class="pre">Vulnerability.scanner</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Vulnerability.severity"><code class="docutils literal notranslate"><span class="pre">Vulnerability.severity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Vulnerability.snippet"><code class="docutils literal notranslate"><span class="pre">Vulnerability.snippet</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Vulnerability.state"><code class="docutils literal notranslate"><span class="pre">Vulnerability.state</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Vulnerability.status"><code class="docutils literal notranslate"><span class="pre">Vulnerability.status</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/finding_models.html#mastf.MASTF.models.Vulnerability.template"><code class="docutils literal notranslate"><span class="pre">Vulnerability.template</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ref/models/permission_models.html">App Permission Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ref/models/permission_models.html#mastf.MASTF.models.AppPermission"><code class="docutils literal notranslate"><span class="pre">AppPermission</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/permission_models.html#mastf.MASTF.models.AppPermission.create_unknown"><code class="docutils literal notranslate"><span class="pre">AppPermission.create_unknown()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/permission_models.html#mastf.MASTF.models.AppPermission.dangerous"><code class="docutils literal notranslate"><span class="pre">AppPermission.dangerous</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/permission_models.html#mastf.MASTF.models.AppPermission.description"><code class="docutils literal notranslate"><span class="pre">AppPermission.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/permission_models.html#mastf.MASTF.models.AppPermission.group"><code class="docutils literal notranslate"><span class="pre">AppPermission.group</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/permission_models.html#mastf.MASTF.models.AppPermission.identifier"><code class="docutils literal notranslate"><span class="pre">AppPermission.identifier</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/permission_models.html#mastf.MASTF.models.AppPermission.name"><code class="docutils literal notranslate"><span class="pre">AppPermission.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/permission_models.html#mastf.MASTF.models.AppPermission.permission_uuid"><code class="docutils literal notranslate"><span class="pre">AppPermission.permission_uuid</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/permission_models.html#mastf.MASTF.models.AppPermission.plevel_status"><code class="docutils literal notranslate"><span class="pre">AppPermission.plevel_status</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/permission_models.html#mastf.MASTF.models.AppPermission.protection_level"><code class="docutils literal notranslate"><span class="pre">AppPermission.protection_level</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/permission_models.html#mastf.MASTF.models.AppPermission.risk"><code class="docutils literal notranslate"><span class="pre">AppPermission.risk</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/permission_models.html#mastf.MASTF.models.AppPermission.short_description"><code class="docutils literal notranslate"><span class="pre">AppPermission.short_description</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ref/models/permission_models.html#mastf.MASTF.models.PermissionFinding"><code class="docutils literal notranslate"><span class="pre">PermissionFinding</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/permission_models.html#mastf.MASTF.models.PermissionFinding.discovery_date"><code class="docutils literal notranslate"><span class="pre">PermissionFinding.discovery_date</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/permission_models.html#mastf.MASTF.models.PermissionFinding.finding_id"><code class="docutils literal notranslate"><span class="pre">PermissionFinding.finding_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/permission_models.html#mastf.MASTF.models.PermissionFinding.permission"><code class="docutils literal notranslate"><span class="pre">PermissionFinding.permission</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/permission_models.html#mastf.MASTF.models.PermissionFinding.scan"><code class="docutils literal notranslate"><span class="pre">PermissionFinding.scan</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/permission_models.html#mastf.MASTF.models.PermissionFinding.scanner"><code class="docutils literal notranslate"><span class="pre">PermissionFinding.scanner</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/permission_models.html#mastf.MASTF.models.PermissionFinding.severity"><code class="docutils literal notranslate"><span class="pre">PermissionFinding.severity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/permission_models.html#mastf.MASTF.models.PermissionFinding.snippet"><code class="docutils literal notranslate"><span class="pre">PermissionFinding.snippet</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/permission_models.html#mastf.MASTF.models.PermissionFinding.template"><code class="docutils literal notranslate"><span class="pre">PermissionFinding.template</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ref/models/package_models.html">Dependency Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.Package"><code class="docutils literal notranslate"><span class="pre">Package</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.Package.artifact_id"><code class="docutils literal notranslate"><span class="pre">Package.artifact_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.Package.description"><code class="docutils literal notranslate"><span class="pre">Package.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.Package.group_id"><code class="docutils literal notranslate"><span class="pre">Package.group_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.Package.is_tracker"><code class="docutils literal notranslate"><span class="pre">Package.is_tracker</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.Package.name"><code class="docutils literal notranslate"><span class="pre">Package.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.Package.package_type"><code class="docutils literal notranslate"><span class="pre">Package.package_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.Package.package_uuid"><code class="docutils literal notranslate"><span class="pre">Package.package_uuid</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.Package.platform"><code class="docutils literal notranslate"><span class="pre">Package.platform</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.PackageVulnerability"><code class="docutils literal notranslate"><span class="pre">PackageVulnerability</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.PackageVulnerability.cve_id"><code class="docutils literal notranslate"><span class="pre">PackageVulnerability.cve_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.PackageVulnerability.identifier"><code class="docutils literal notranslate"><span class="pre">PackageVulnerability.identifier</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.PackageVulnerability.package"><code class="docutils literal notranslate"><span class="pre">PackageVulnerability.package</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.PackageVulnerability.severity"><code class="docutils literal notranslate"><span class="pre">PackageVulnerability.severity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.PackageVulnerability.version"><code class="docutils literal notranslate"><span class="pre">PackageVulnerability.version</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.Dependency"><code class="docutils literal notranslate"><span class="pre">Dependency</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.Dependency.dependency_uuid"><code class="docutils literal notranslate"><span class="pre">Dependency.dependency_uuid</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.Dependency.license"><code class="docutils literal notranslate"><span class="pre">Dependency.license</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.Dependency.outdated"><code class="docutils literal notranslate"><span class="pre">Dependency.outdated</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.Dependency.package"><code class="docutils literal notranslate"><span class="pre">Dependency.package</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.Dependency.project"><code class="docutils literal notranslate"><span class="pre">Dependency.project</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.Dependency.relation"><code class="docutils literal notranslate"><span class="pre">Dependency.relation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.Dependency.scanner"><code class="docutils literal notranslate"><span class="pre">Dependency.scanner</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.Dependency.version"><code class="docutils literal notranslate"><span class="pre">Dependency.version</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../ref/models/package_models.html#mastf.MASTF.models.Dependency.vulnerabilities"><code class="docutils literal notranslate"><span class="pre">Dependency.vulnerabilities()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ref/templates.html">HTML Templates Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ref/technologies.html">List of used Frameworks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/rest/index.html">REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/forms.html">Enhanced Forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/forms.html#enhanced-fields">Enhanced Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/forms.html#mastf.MASTF.forms.ModelField"><code class="docutils literal notranslate"><span class="pre">ModelField</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/forms.html#mastf.MASTF.forms.ModelField.clean"><code class="docutils literal notranslate"><span class="pre">ModelField.clean()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/forms.html#mastf.MASTF.forms.ManyToManyField"><code class="docutils literal notranslate"><span class="pre">ManyToManyField</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/forms.html#mastf.MASTF.forms.ManyToManyField.clean"><code class="docutils literal notranslate"><span class="pre">ManyToManyField.clean()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/forms.html#mastf.MASTF.forms.ManyToManyField.convert_id"><code class="docutils literal notranslate"><span class="pre">ManyToManyField.convert_id()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/serializers.html">Serializer Extensions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/serializers.html#enhanced-fields-and-serializers">Enhanced Fields and Serializers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/serializers.html#mastf.MASTF.serializers.ManyToManyField"><code class="docutils literal notranslate"><span class="pre">ManyToManyField</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/serializers.html#mastf.MASTF.serializers.ManyToManyField.to_internal_value"><code class="docutils literal notranslate"><span class="pre">ManyToManyField.to_internal_value()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/serializers.html#mastf.MASTF.serializers.ManyToManyField.to_representation"><code class="docutils literal notranslate"><span class="pre">ManyToManyField.to_representation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/serializers.html#mastf.MASTF.serializers.ManyToManySerializer"><code class="docutils literal notranslate"><span class="pre">ManyToManySerializer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/serializers.html#mastf.MASTF.serializers.ManyToManySerializer.rel_fields"><code class="docutils literal notranslate"><span class="pre">ManyToManySerializer.rel_fields</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/permissions.html">Permission System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/permissions.html#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/permissions.html#mastf.MASTF.permissions._Method"><code class="docutils literal notranslate"><span class="pre">_Method</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/permissions.html#mastf.MASTF.permissions._Method.has_permission"><code class="docutils literal notranslate"><span class="pre">_Method.has_permission()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/permissions.html#mastf.MASTF.permissions.BoundPermission"><code class="docutils literal notranslate"><span class="pre">BoundPermission</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/permissions.html#mastf.MASTF.permissions.BoundPermission.assign_to"><code class="docutils literal notranslate"><span class="pre">BoundPermission.assign_to()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/permissions.html#mastf.MASTF.permissions.BoundPermission.codename"><code class="docutils literal notranslate"><span class="pre">BoundPermission.codename</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/permissions.html#mastf.MASTF.permissions.BoundPermission.create"><code class="docutils literal notranslate"><span class="pre">BoundPermission.create()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/permissions.html#mastf.MASTF.permissions.BoundPermission.errors"><code class="docutils literal notranslate"><span class="pre">BoundPermission.errors</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/permissions.html#mastf.MASTF.permissions.BoundPermission.get"><code class="docutils literal notranslate"><span class="pre">BoundPermission.get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/permissions.html#mastf.MASTF.permissions.BoundPermission.has_object_permission"><code class="docutils literal notranslate"><span class="pre">BoundPermission.has_object_permission()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/permissions.html#mastf.MASTF.permissions.BoundPermission.is_runtime"><code class="docutils literal notranslate"><span class="pre">BoundPermission.is_runtime</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/permissions.html#mastf.MASTF.permissions.BoundPermission.model"><code class="docutils literal notranslate"><span class="pre">BoundPermission.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/permissions.html#mastf.MASTF.permissions.BoundPermission.name"><code class="docutils literal notranslate"><span class="pre">BoundPermission.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/permissions.html#mastf.MASTF.permissions.BoundPermission.remove_from"><code class="docutils literal notranslate"><span class="pre">BoundPermission.remove_from()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/converters.html">Converters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/converters.html#components">Components</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/converters.html#mastf.MASTF.converters.StringConverter"><code class="docutils literal notranslate"><span class="pre">StringConverter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/converters.html#mastf.MASTF.converters.listconverters"><code class="docutils literal notranslate"><span class="pre">listconverters()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/middleware.html">Middleware</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/middleware.html#mastf.MASTF.middleware.FirstTimeMiddleware"><code class="docutils literal notranslate"><span class="pre">FirstTimeMiddleware</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/mixins.html">Web Mixins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/mixins.html#view-classes">View Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/mixins.html#mastf.MASTF.mixins.TemplateAPIView"><code class="docutils literal notranslate"><span class="pre">TemplateAPIView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/mixins.html#mastf.MASTF.mixins.TemplateAPIView.check_object_permissions"><code class="docutils literal notranslate"><span class="pre">TemplateAPIView.check_object_permissions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/mixins.html#mastf.MASTF.mixins.TemplateAPIView.check_permissions"><code class="docutils literal notranslate"><span class="pre">TemplateAPIView.check_permissions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/mixins.html#mastf.MASTF.mixins.TemplateAPIView.default_redirect"><code class="docutils literal notranslate"><span class="pre">TemplateAPIView.default_redirect</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/mixins.html#mastf.MASTF.mixins.TemplateAPIView.get_object"><code class="docutils literal notranslate"><span class="pre">TemplateAPIView.get_object()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/mixins.html#mastf.MASTF.mixins.TemplateAPIView.keep_redirect_kwargs"><code class="docutils literal notranslate"><span class="pre">TemplateAPIView.keep_redirect_kwargs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/mixins.html#mastf.MASTF.mixins.TemplateAPIView.on_dispatch_error"><code class="docutils literal notranslate"><span class="pre">TemplateAPIView.on_dispatch_error()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/mixins.html#mastf.MASTF.mixins.TemplateAPIView.permission_classes"><code class="docutils literal notranslate"><span class="pre">TemplateAPIView.permission_classes</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/mixins.html#mixin-classes">Mixin Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/mixins.html#mastf.MASTF.mixins.ContextMixinBase"><code class="docutils literal notranslate"><span class="pre">ContextMixinBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/mixins.html#mastf.MASTF.mixins.ContextMixinBase.login_url"><code class="docutils literal notranslate"><span class="pre">ContextMixinBase.login_url</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/mixins.html#mastf.MASTF.mixins.ContextMixinBase.prepare_context_data"><code class="docutils literal notranslate"><span class="pre">ContextMixinBase.prepare_context_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/mixins.html#mastf.MASTF.mixins.VulnContextMixin"><code class="docutils literal notranslate"><span class="pre">VulnContextMixin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/mixins.html#mastf.MASTF.mixins.VulnContextMixin.apply_vuln_context"><code class="docutils literal notranslate"><span class="pre">VulnContextMixin.apply_vuln_context()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/mixins.html#mastf.MASTF.mixins.VulnContextMixin.get_vuln_context"><code class="docutils literal notranslate"><span class="pre">VulnContextMixin.get_vuln_context()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/mixins.html#mastf.MASTF.mixins.UserProjectMixin"><code class="docutils literal notranslate"><span class="pre">UserProjectMixin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/mixins.html#mastf.MASTF.mixins.TopVulnerableProjectsMixin"><code class="docutils literal notranslate"><span class="pre">TopVulnerableProjectsMixin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/mixins.html#mastf.MASTF.mixins.TopVulnerableProjectsMixin.get_top_vulnerable_projects"><code class="docutils literal notranslate"><span class="pre">TopVulnerableProjectsMixin.get_top_vulnerable_projects()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/mixins.html#mastf.MASTF.mixins.ScanTimelineMixin"><code class="docutils literal notranslate"><span class="pre">ScanTimelineMixin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/mixins.html#mastf.MASTF.mixins.ScanTimelineMixin.get_scan_timeline"><code class="docutils literal notranslate"><span class="pre">ScanTimelineMixin.get_scan_timeline()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/scanner_plugin.html">Scanner Plugin</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/scanner_plugin.html#basics">Basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.plugin.Plugin"><code class="docutils literal notranslate"><span class="pre">Plugin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.plugin.Extension"><code class="docutils literal notranslate"><span class="pre">Extension</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.plugin.ScannerPlugin"><code class="docutils literal notranslate"><span class="pre">ScannerPlugin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.plugin.ScannerPlugin.context"><code class="docutils literal notranslate"><span class="pre">ScannerPlugin.context()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.plugin.ScannerPlugin.extensions"><code class="docutils literal notranslate"><span class="pre">ScannerPlugin.extensions</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.plugin.ScannerPlugin.help"><code class="docutils literal notranslate"><span class="pre">ScannerPlugin.help</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.plugin.ScannerPlugin.name"><code class="docutils literal notranslate"><span class="pre">ScannerPlugin.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.plugin.ScannerPlugin.task"><code class="docutils literal notranslate"><span class="pre">ScannerPlugin.task</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.plugin.ScannerPlugin.title"><code class="docutils literal notranslate"><span class="pre">ScannerPlugin.title</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.plugin.ScannerPluginTask"><code class="docutils literal notranslate"><span class="pre">ScannerPluginTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.plugin.ScannerPluginTask.get_item"><code class="docutils literal notranslate"><span class="pre">ScannerPluginTask.get_item()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.plugin.ScannerPluginTask.prepare_scan"><code class="docutils literal notranslate"><span class="pre">ScannerPluginTask.prepare_scan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.plugin.ScannerPluginTask.run_scan"><code class="docutils literal notranslate"><span class="pre">ScannerPluginTask.run_scan()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/scanner_plugin.html#default-mixins">Default Mixins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.mixins.DetailsMixin"><code class="docutils literal notranslate"><span class="pre">DetailsMixin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.mixins.DetailsMixin.charts"><code class="docutils literal notranslate"><span class="pre">DetailsMixin.charts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.mixins.DetailsMixin.ctx_details"><code class="docutils literal notranslate"><span class="pre">DetailsMixin.ctx_details()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.mixins.PermissionsMixin"><code class="docutils literal notranslate"><span class="pre">PermissionsMixin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.mixins.PermissionsMixin.ctx_permissions"><code class="docutils literal notranslate"><span class="pre">PermissionsMixin.ctx_permissions()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.mixins.VulnerabilitiesMixin"><code class="docutils literal notranslate"><span class="pre">VulnerabilitiesMixin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.mixins.VulnerabilitiesMixin.ctx_vulnerabilities"><code class="docutils literal notranslate"><span class="pre">VulnerabilitiesMixin.ctx_vulnerabilities()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.mixins.FindingsMixins"><code class="docutils literal notranslate"><span class="pre">FindingsMixins</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.mixins.FindingsMixins.ctx_findings"><code class="docutils literal notranslate"><span class="pre">FindingsMixins.ctx_findings()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.mixins.HostsMixin"><code class="docutils literal notranslate"><span class="pre">HostsMixin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.mixins.HostsMixin.ctx_hosts"><code class="docutils literal notranslate"><span class="pre">HostsMixin.ctx_hosts()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.mixins.HostsMixin.res_hosts"><code class="docutils literal notranslate"><span class="pre">HostsMixin.res_hosts()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.mixins.ComponentsMixin"><code class="docutils literal notranslate"><span class="pre">ComponentsMixin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.mixins.ComponentsMixin.ctx_components"><code class="docutils literal notranslate"><span class="pre">ComponentsMixin.ctx_components()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.mixins.ComponentsMixin.res_hosts"><code class="docutils literal notranslate"><span class="pre">ComponentsMixin.res_hosts()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/scanner_plugin.html#android-plugin">Android Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.android_sast.AndroidTask"><code class="docutils literal notranslate"><span class="pre">AndroidTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.android_sast.AndroidTask.do_app_info_scan"><code class="docutils literal notranslate"><span class="pre">AndroidTask.do_app_info_scan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.android_sast.AndroidTask.do_code_scan"><code class="docutils literal notranslate"><span class="pre">AndroidTask.do_code_scan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.android_sast.AndroidTask.do_manifest_scan"><code class="docutils literal notranslate"><span class="pre">AndroidTask.do_manifest_scan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.android_sast.AndroidTask.do_package_scan"><code class="docutils literal notranslate"><span class="pre">AndroidTask.do_package_scan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.android_sast.AndroidTask.do_semgrep_scan"><code class="docutils literal notranslate"><span class="pre">AndroidTask.do_semgrep_scan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.android_sast.AndroidTask.do_yara_scan"><code class="docutils literal notranslate"><span class="pre">AndroidTask.do_yara_scan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.android_sast.AndroidTask.prepare_scan"><code class="docutils literal notranslate"><span class="pre">AndroidTask.prepare_scan()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.android_sast.AndroidScannerPlugin"><code class="docutils literal notranslate"><span class="pre">AndroidScannerPlugin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.android_sast.AndroidScannerPlugin.extensions"><code class="docutils literal notranslate"><span class="pre">AndroidScannerPlugin.extensions</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.android_sast.AndroidScannerPlugin.help"><code class="docutils literal notranslate"><span class="pre">AndroidScannerPlugin.help</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.android_sast.AndroidScannerPlugin.name"><code class="docutils literal notranslate"><span class="pre">AndroidScannerPlugin.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.android_sast.AndroidScannerPlugin.task"><code class="docutils literal notranslate"><span class="pre">AndroidScannerPlugin.task</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.android_sast.AndroidScannerPlugin.title"><code class="docutils literal notranslate"><span class="pre">AndroidScannerPlugin.title</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/scanner_plugin.html#android-scan-tasks">Android Scan Tasks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.android_sast.app_info_scan.get_app_info"><code class="docutils literal notranslate"><span class="pre">get_app_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.android_sast.app_info_scan.get_app_net_info"><code class="docutils literal notranslate"><span class="pre">get_app_net_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.android_sast.app_info_scan.NetworkSecurityHandler"><code class="docutils literal notranslate"><span class="pre">NetworkSecurityHandler</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.android_sast.manifest_scan.get_manifest_info"><code class="docutils literal notranslate"><span class="pre">get_manifest_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.android_sast.manifest_scan.run_manifest_scan"><code class="docutils literal notranslate"><span class="pre">run_manifest_scan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.android_sast.manifest_scan.AndroidManifestHandler"><code class="docutils literal notranslate"><span class="pre">AndroidManifestHandler</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/scanner_plugin.html#sast-interface">SAST Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.code.yara_scan_file"><code class="docutils literal notranslate"><span class="pre">yara_scan_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.code.yara_code_analysis"><code class="docutils literal notranslate"><span class="pre">yara_code_analysis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.code.sast_scan_file"><code class="docutils literal notranslate"><span class="pre">sast_scan_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.code.sast_code_analysis"><code class="docutils literal notranslate"><span class="pre">sast_code_analysis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.code.add_finding"><code class="docutils literal notranslate"><span class="pre">add_finding()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.code.YaraResult"><code class="docutils literal notranslate"><span class="pre">YaraResult</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.code.YaraResult.get_template"><code class="docutils literal notranslate"><span class="pre">YaraResult.get_template()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.code.YaraResult.get_template_data"><code class="docutils literal notranslate"><span class="pre">YaraResult.get_template_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.code.YaraResult.internal_id"><code class="docutils literal notranslate"><span class="pre">YaraResult.internal_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.code.YaraResult.severity"><code class="docutils literal notranslate"><span class="pre">YaraResult.severity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/scanner_plugin.html#mastf.MASTF.scanners.code.YaraResult.template_id"><code class="docutils literal notranslate"><span class="pre">YaraResult.template_id</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/utils/index.html">Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/utils/datatables.html">DataTables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/utils/datatables.html#mastf.MASTF.utils.datatable.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/utils/datatables.html#mastf.MASTF.utils.datatable.DataTableRequest"><code class="docutils literal notranslate"><span class="pre">DataTableRequest</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/utils/datatables.html#mastf.MASTF.utils.datatable.DataTableRequest.columns"><code class="docutils literal notranslate"><span class="pre">DataTableRequest.columns</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/utils/datatables.html#mastf.MASTF.utils.datatable.DataTableRequest.length"><code class="docutils literal notranslate"><span class="pre">DataTableRequest.length</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/utils/datatables.html#mastf.MASTF.utils.datatable.DataTableRequest.order_column"><code class="docutils literal notranslate"><span class="pre">DataTableRequest.order_column</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/utils/datatables.html#mastf.MASTF.utils.datatable.DataTableRequest.order_direction"><code class="docutils literal notranslate"><span class="pre">DataTableRequest.order_direction</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/utils/datatables.html#mastf.MASTF.utils.datatable.DataTableRequest.search_value"><code class="docutils literal notranslate"><span class="pre">DataTableRequest.search_value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/utils/datatables.html#mastf.MASTF.utils.datatable.DataTableRequest.start"><code class="docutils literal notranslate"><span class="pre">DataTableRequest.start</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/utils/enum.html">Enums</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.StringEnum"><code class="docutils literal notranslate"><span class="pre">StringEnum</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/utils/enum.html#user-related-classes">User-Related Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.Role"><code class="docutils literal notranslate"><span class="pre">Role</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.Visibility"><code class="docutils literal notranslate"><span class="pre">Visibility</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/utils/enum.html#finding-related-classes">Finding-Related Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.Severity"><code class="docutils literal notranslate"><span class="pre">Severity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.State"><code class="docutils literal notranslate"><span class="pre">State</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/utils/enum.html#dependency-related-classes">Dependency-Related Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.Platform"><code class="docutils literal notranslate"><span class="pre">Platform</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.PackageType"><code class="docutils literal notranslate"><span class="pre">PackageType</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.Relation"><code class="docutils literal notranslate"><span class="pre">Relation</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/utils/enum.html#other-enum-classes">Other Enum Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.HostType"><code class="docutils literal notranslate"><span class="pre">HostType</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.DataProtectionLevel"><code class="docutils literal notranslate"><span class="pre">DataProtectionLevel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.ProtectionLevel"><code class="docutils literal notranslate"><span class="pre">ProtectionLevel</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/utils/filetree.html">FileTree Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/utils/filetree.html#mastf.MASTF.utils.filetree.visitor"><code class="docutils literal notranslate"><span class="pre">visitor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/utils/filetree.html#mastf.MASTF.utils.filetree.apply_rules"><code class="docutils literal notranslate"><span class="pre">apply_rules()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/utils/filetree.html#classes">Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/utils/filetree.html#mastf.MASTF.utils.filetree._Visitor"><code class="docutils literal notranslate"><span class="pre">_Visitor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/utils/filetree.html#mastf.MASTF.utils.filetree._FileDesc"><code class="docutils literal notranslate"><span class="pre">_FileDesc</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/utils/upload.html">File Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/utils/upload.html#mastf.MASTF.utils.upload.checksum_from_path"><code class="docutils literal notranslate"><span class="pre">checksum_from_path()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/utils/upload.html#mastf.MASTF.utils.upload.get_file_checksum"><code class="docutils literal notranslate"><span class="pre">get_file_checksum()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/utils/upload.html#mastf.MASTF.utils.upload.handle_scan_file_upload"><code class="docutils literal notranslate"><span class="pre">handle_scan_file_upload()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Core API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core_api/progress.html">Progress Observer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../core_api/progress.html#usage-example">Usage Example:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../core_api/progress.html#mastf.core.progress.Observer"><code class="docutils literal notranslate"><span class="pre">Observer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../core_api/progress.html#mastf.core.progress.Observer.create_meta"><code class="docutils literal notranslate"><span class="pre">Observer.create_meta()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../core_api/progress.html#mastf.core.progress.Observer.exception"><code class="docutils literal notranslate"><span class="pre">Observer.exception()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../core_api/progress.html#mastf.core.progress.Observer.fail"><code class="docutils literal notranslate"><span class="pre">Observer.fail()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../core_api/progress.html#mastf.core.progress.Observer.increment"><code class="docutils literal notranslate"><span class="pre">Observer.increment()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../core_api/progress.html#mastf.core.progress.Observer.logger"><code class="docutils literal notranslate"><span class="pre">Observer.logger</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../core_api/progress.html#mastf.core.progress.Observer.pos"><code class="docutils literal notranslate"><span class="pre">Observer.pos</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../core_api/progress.html#mastf.core.progress.Observer.success"><code class="docutils literal notranslate"><span class="pre">Observer.success()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../core_api/progress.html#mastf.core.progress.Observer.task"><code class="docutils literal notranslate"><span class="pre">Observer.task</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../core_api/progress.html#mastf.core.progress.Observer.update"><code class="docutils literal notranslate"><span class="pre">Observer.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core_api/file_handler.html">Task File Handlers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../core_api/file_handler.html#apk-files">APK Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../core_api/file_handler.html#ipa-files">IPA Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../core_api/file_handler.html#mastf.core.files.handler.TaskFileHandler"><code class="docutils literal notranslate"><span class="pre">TaskFileHandler</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../core_api/file_handler.html#mastf.core.files.handler.TaskFileHandler.apply"><code class="docutils literal notranslate"><span class="pre">TaskFileHandler.apply()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../core_api/file_handler.html#mastf.core.files.handler.TaskFileHandler.from_scan"><code class="docutils literal notranslate"><span class="pre">TaskFileHandler.from_scan()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core_api/permission.html">App Permissions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../core_api/permission.html#mastf.core.files.apl.PermissionDefItem"><code class="docutils literal notranslate"><span class="pre">PermissionDefItem</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../core_api/permission.html#mastf.core.files.apl.GroupDefItem"><code class="docutils literal notranslate"><span class="pre">GroupDefItem</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../core_api/permission.html#mastf.core.files.apl.AppPermissionList"><code class="docutils literal notranslate"><span class="pre">AppPermissionList</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../core_api/permission.html#example-usage">Example Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../core_api/permission.html#mastf.core.files.apl.parse"><code class="docutils literal notranslate"><span class="pre">parse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../core_api/permission.html#mastf.core.files.apl.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Android API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../android_api/manifest.html">Android Manifest Visitor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../android_api/manifest.html#mastf.android.axml._AXmlElement"><code class="docutils literal notranslate"><span class="pre">_AXmlElement</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../android_api/manifest.html#mastf.android.axml._AXmlElement.add"><code class="docutils literal notranslate"><span class="pre">_AXmlElement.add()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../android_api/manifest.html#mastf.android.axml.AXmlVisitorBase"><code class="docutils literal notranslate"><span class="pre">AXmlVisitorBase</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../android_api/manifest.html#mastf.android.axml.AXmlVisitor"><code class="docutils literal notranslate"><span class="pre">AXmlVisitor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../android_api/manifest.html#mastf.android.axml.AXmlVisitor.end"><code class="docutils literal notranslate"><span class="pre">AXmlVisitor.end</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../android_api/manifest.html#mastf.android.axml.AXmlVisitor.start"><code class="docutils literal notranslate"><span class="pre">AXmlVisitor.start</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../android_api/manifest.html#mastf.android.axml.AXmlVisitor.visit_document"><code class="docutils literal notranslate"><span class="pre">AXmlVisitor.visit_document()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../android_api/manifest.html#mastf.android.axml.AXmlVisitor.visit_element"><code class="docutils literal notranslate"><span class="pre">AXmlVisitor.visit_element()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../android_api/tools.html">Android Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../android_api/tools.html#module-mastf.android.tools.apktool">Apktool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../android_api/tools.html#mastf.android.tools.apktool.run_apktool_decode"><code class="docutils literal notranslate"><span class="pre">run_apktool_decode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../android_api/tools.html#mastf.android.tools.apktool.extractrsc"><code class="docutils literal notranslate"><span class="pre">extractrsc()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../android_api/tools.html#module-mastf.android.tools.baksmali">Baksmali</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../android_api/tools.html#mastf.android.tools.baksmali.decompile"><code class="docutils literal notranslate"><span class="pre">decompile()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../android_api/tools.html#mastf.android.tools.baksmali.to_java"><code class="docutils literal notranslate"><span class="pre">to_java()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">MAST-Framework</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">mastf.MASTF.utils.enum</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for mastf.MASTF.utils.enum</h1><div class="highlight"><pre>
+<span></span><span class="c1"># This file is part of MAST-F&#39;s Frontend API</span>
+<span class="c1"># Copyright (c) 2024 Mobile Application Security Testing Framework</span>
+<span class="c1">#</span>
+<span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># in the Software without restriction, including without limitation the rights</span>
+<span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
+<span class="c1"># furnished to do so, subject to the following conditions:</span>
+<span class="c1">#</span>
+<span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
+<span class="c1"># copies or substantial portions of the Software.</span>
+<span class="c1">#</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="c1"># LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
+<span class="c1"># SOFTWARE.</span>
+<span class="vm">__doc__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Enum class definitions that can be used as choices within Django models</span>
+<span class="s2">or as enum values. Note that all classes of this module inherit the</span>
+<span class="s2">:class:`StringEnum` class, which acts as a string if you use special</span>
+<span class="s2">methods like ``==``, ``!=``, ``str(x)`` and ``hash(x)``.</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">inspect</span>
+
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+
+
+<div class="viewcode-block" id="StringEnum">
+<a class="viewcode-back" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.StringEnum">[docs]</a>
+<span class="k">class</span> <span class="nc">StringEnum</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A custom enumeration that allows for the use of string values as enum members.</span>
+
+<span class="sd">    It extends the built-in &#39;Enum&#39; class in Python and overrides several methods</span>
+<span class="sd">    to provide additional functionality. To use this class, simply inherit from the</span>
+<span class="sd">    :class:`StringEnum` class and define class members with string values.</span>
+
+<span class="sd">    For example:</span>
+
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">        :linenos:</span>
+<span class="sd">        :caption: enum.py</span>
+
+<span class="sd">        class MyEnum(StringEnum):</span>
+<span class="sd">            FOO = &quot;foo&quot;</span>
+<span class="sd">            BAR = &quot;bar&quot;</span>
+<span class="sd">            BAZ = &quot;baz&quot;</span>
+
+<span class="sd">    You can then use the enum members like any other enum member, including comparing</span>
+<span class="sd">    them with strings:</span>
+
+<span class="sd">    &gt;&gt;&gt; MyEnum.FOO == &quot;foo&quot;</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; MyEnum.BAR != &quot;qux&quot;</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; str(MyEnum.BAZ)</span>
+<span class="sd">    &#39;baz&#39;</span>
+
+<span class="sd">    Note that you can still use the usual comparison operators (``&lt;``, ``&lt;=``, ``&gt;``,</span>
+<span class="sd">    ``&gt;=``) with StringEnum members, but they will be compared based on their order of</span>
+<span class="sd">    definition in the class, not their string values.</span>
+
+<span class="sd">    .. hint::</span>
+<span class="sd">        You can use the class attribute ``choices`` within definitions of Django database</span>
+<span class="sd">        models to restrict the amount of accepted values. Note also, that the static field</span>
+<span class="sd">        won&#39;t be added if you place your enum in other files than ``/mastf/MASTF/utils/enum.py``.</span>
+
+<span class="sd">        &gt;&gt;&gt; MyEnum.choices</span>
+<span class="sd">        [(&#39;foo&#39;, &#39;foo&#39;), (&#39;bar&#39;, &#39;bar&#39;), (&#39;baz&#39;, &#39;baz&#39;)]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">__value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">__value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">__value</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="n">__value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">__value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">__value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">!=</span> <span class="n">__value</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__ne__</span><span class="p">(</span><span class="n">__value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
+
+    <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="Role">
+<a class="viewcode-back" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.Role">[docs]</a>
+<span class="k">class</span> <span class="nc">Role</span><span class="p">(</span><span class="n">StringEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This class is an enumeration of different roles available to users within the</span>
+<span class="sd">    context of the :class:`Account` model. The purpose of this class is to provide</span>
+<span class="sd">    a way to link a user to a specific role.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">ADMIN</span> <span class="o">=</span> <span class="s2">&quot;Admin&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    All users with this role have access to all resources of the framework instance,</span>
+<span class="sd">    they can add and delete existing users as well as teams.</span>
+
+<span class="sd">    .. warning::</span>
+<span class="sd">        If you are the only user (administrative) and try to delete your account</span>
+<span class="sd">        with no other admin account present, the system will prevent removal. The</span>
+<span class="sd">        same approach is applied if you want to remove your administrator priviledges</span>
+<span class="sd">        from your account but being the only registered admin user.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">REGULAR</span> <span class="o">=</span> <span class="s2">&quot;Regular&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Normal users can create, modify and delete teams, projects and bundles.&quot;&quot;&quot;</span>
+
+    <span class="n">EXTERNAL</span> <span class="o">=</span> <span class="s2">&quot;External&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This role is still in development but is thought to be a restriction to users that</span>
+<span class="sd">    should prevent them to access specific resources of this framework.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="Severity">
+<a class="viewcode-back" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.Severity">[docs]</a>
+<span class="k">class</span> <span class="nc">Severity</span><span class="p">(</span><span class="n">StringEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This class is an enumeration of different severity levels that can be used to</span>
+<span class="sd">    categorize vulnerabilities, findings, projects, bundles or scans. The purpose</span>
+<span class="sd">    of this class is to provide a standardized and consistent way of categorizing</span>
+<span class="sd">    issues based on their severity level.</span>
+
+<span class="sd">    The Severity class can be used to categorize vulnerabilities and other models</span>
+<span class="sd">    based on their severity level. For example, different classes use the this</span>
+<span class="sd">    class to categorize reported vulnerabilities based on their severity level.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">CRITICAL</span> <span class="o">=</span> <span class="s2">&quot;Critical&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a critical severity level. It is typically used to indicate</span>
+<span class="sd">    vulnerabilities that require immediate attention and could have severe</span>
+<span class="sd">    consequences if left unresolved.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">HIGH</span> <span class="o">=</span> <span class="s2">&quot;High&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a high severity level. It is typically used to indicate vulnerabilities</span>
+<span class="sd">    or API findings that are important and require attention, but are not as urgent or</span>
+<span class="sd">    critical as critical findings.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">MEDIUM</span> <span class="o">=</span> <span class="s2">&quot;Medium&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a medium severity level. It is typically used to indicate issues that</span>
+<span class="sd">    are less urgent than high or critical findings, but still require attention.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">LOW</span> <span class="o">=</span> <span class="s2">&quot;Low&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a low severity level. It is typically used to indicate findings that</span>
+<span class="sd">    are minor and have a low impact on the system or user experience.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">INFO</span> <span class="o">=</span> <span class="s2">&quot;Info&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents an information severity level. It is typically used on findigns that</span>
+<span class="sd">    are not necessarily problems or bugs, but provide helpful information to users or</span>
+<span class="sd">    developers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">SECURE</span> <span class="o">=</span> <span class="s2">&quot;Secure&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a secure severity level. It is applied to findigns related to security</span>
+<span class="sd">    or compliance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">NONE</span> <span class="o">=</span> <span class="s2">&quot;None&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents no severity level. This will be the default level applied to all</span>
+<span class="sd">    categories that use a severity as their risk indicator. It can also be used</span>
+<span class="sd">    to indicate that there is no severity level associated with a particular</span>
+<span class="sd">    finding or vulnerability.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="State">
+<a class="viewcode-back" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.State">[docs]</a>
+<span class="k">class</span> <span class="nc">State</span><span class="p">(</span><span class="n">StringEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Different states that can be used to track the status of a vulnerability or.</span>
+<span class="sd">    The purpose of this class is to provide a regulated and consistent way of</span>
+<span class="sd">    categorizing the state of a vulnerability.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">TO_VERIFY</span> <span class="o">=</span> <span class="s2">&quot;To Verify&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents the state of a vulnerability that needs to be verified. It expresses</span>
+<span class="sd">    that the vulnerability has been reported or detected, but it has not yet been</span>
+<span class="sd">    confirmed to be valid.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">CONFIRMED</span> <span class="o">=</span> <span class="s2">&quot;Confirmed&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents the state of a vulnerability that has been confirmed as a valid</span>
+<span class="sd">    vulnerability. It indicates that the vulnerability has been validated and its</span>
+<span class="sd">    existence has been confirmed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">URGENT</span> <span class="o">=</span> <span class="s2">&quot;Urgent&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents the state of a vulnerability that requires immediate attention. It</span>
+<span class="sd">    implies that the vulnerability is critical and needs to be addressed urgently.</span>
+
+<span class="sd">    .. hint:: Risk level</span>
+<span class="sd">        Vulnerabilities annotated with an urgent state should be marked with</span>
+<span class="sd">        ``CRITICAL`` as their severity level.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">NOT_EXPLOITABLE</span> <span class="o">=</span> <span class="s2">&quot;Not Exploitable&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Mirrors the state of a vulnerability that is not exploitable. It marks the</span>
+<span class="sd">    vulnerability to be reviewed and determined to be not exploitable.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">PROPOSED_NOT_EXPLOITABLE</span> <span class="o">=</span> <span class="s2">&quot;Proposed not exploitable&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents the state of a vulnerability that is proposed to be not exploitable.</span>
+<span class="sd">    It indicates that the vulnerability has been reviewed and a decision to classify</span>
+<span class="sd">    it as not exploitable has been proposed.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="Visibility">
+<a class="viewcode-back" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.Visibility">[docs]</a>
+<span class="k">class</span> <span class="nc">Visibility</span><span class="p">(</span><span class="n">StringEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This enum represents the different visibility options available for the</span>
+<span class="sd">    :class:`Project` and :class:`Team` model. It is intended to provide a consistent</span>
+<span class="sd">    approach to categorizing the visibility of a project or team.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">PUBLIC</span> <span class="o">=</span> <span class="s2">&quot;Public&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Indicates that the project is publicly visible to everyone. This attribute should</span>
+<span class="sd">    be used when a project is intended to be open and visible to all users.</span>
+
+<span class="sd">    .. attention::</span>
+<span class="sd">        Use this visibility level only if you want to make your project&#39;s or team&#39;s</span>
+<span class="sd">        resources available to all other users.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">PRIVATE</span> <span class="o">=</span> <span class="s2">&quot;Private&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Indicates that the project is not visible to everyone and is restricted to authorized</span>
+<span class="sd">    users only. This attribute should be used when a project is intended to be kept</span>
+<span class="sd">    confidential and not accessible to everyone.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">INTERNAL</span> <span class="o">=</span> <span class="s2">&quot;Internal&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Implies that the project is visible only to users within the selected or team. This</span>
+<span class="sd">    attribute should be used when a project is intended to be visible only to the internal</span>
+<span class="sd">    team and not to the public.</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">        This visibility level may not be used for :class:`Team` objects.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
+<span class="c1"># TODO:(docs)</span>
+<span class="k">class</span> <span class="nc">InspectionType</span><span class="p">(</span><span class="n">StringEnum</span><span class="p">):</span>
+    <span class="n">SIMPLE</span> <span class="o">=</span> <span class="s2">&quot;Simple&quot;</span>
+    <span class="n">ADVANCED</span> <span class="o">=</span> <span class="s2">&quot;Advanced&quot;</span>
+
+
+<div class="viewcode-block" id="Platform">
+<a class="viewcode-back" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.Platform">[docs]</a>
+<span class="k">class</span> <span class="nc">Platform</span><span class="p">(</span><span class="n">StringEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The ``Platform`` enum provides options to indicate the platform on which a</span>
+<span class="sd">    software package was published. Its use-case is to filter possible dependencies</span>
+<span class="sd">    according to the used scan-target.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">ANDROID</span> <span class="o">=</span> <span class="s2">&quot;Android&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents the Android platform. This attribute can be used to indicate that an</span>
+<span class="sd">    identified package is designed to work on Android devices.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">IOS</span> <span class="o">=</span> <span class="s2">&quot;iOS&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents the iOS platform. This attribute can be used to indicate that an</span>
+<span class="sd">    identified package is designed to work on iOS devices.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">UNKNOWN</span> <span class="o">=</span> <span class="s2">&quot;Undefined&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents an undefined or unknown platform. This attribute will be used as the</span>
+<span class="sd">    default value for new packages and can also be used when the platform of a</span>
+<span class="sd">    pcakge is unknown or cannot be determined.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="PackageType">
+<a class="viewcode-back" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.PackageType">[docs]</a>
+<span class="k">class</span> <span class="nc">PackageType</span><span class="p">(</span><span class="n">StringEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Provides options to indicate the type of a software package published on a specific</span>
+<span class="sd">    platform. It can be used to standardize and classify software packages based on their</span>
+<span class="sd">    type.</span>
+
+<span class="sd">    This enum is in the following context:</span>
+
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">        :linenos:</span>
+
+<span class="sd">        from mastf.MASTF.utils.enum import PackageType</span>
+
+<span class="sd">        class Package(models.Model):</span>
+<span class="sd">            name = models.CharField(max_length=...)</span>
+<span class="sd">            type = models.CharField(choices=PackageType.choices, default=PackageType.NONE, max_length=20)</span>
+<span class="sd">            ...</span>
+
+<span class="sd">    In the above code snippet, the ``type`` field is set as a ``CharField`` with</span>
+<span class="sd">    a maximum length of 20 and the available choices are taken from the ``PackageType``</span>
+<span class="sd">    enum. This allows for easy and consistent specification of the package type. The</span>
+<span class="sd">    attribute can also be used as a parameter in methods to filter results based on</span>
+<span class="sd">    their package type.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">GITHUB</span> <span class="o">=</span> <span class="s2">&quot;Github&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a package published on Github. This attribute can be used to indicate that</span>
+<span class="sd">    a software package is available on Github (may not be).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">DART</span> <span class="o">=</span> <span class="s2">&quot;Dart&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a Dart package. This attribute marks a software package to be developed using</span>
+<span class="sd">    Dart programming language.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">CORDOVA</span> <span class="o">=</span> <span class="s2">&quot;Cordova&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a Cordova package. This attribute can be used to indicate that a software</span>
+<span class="sd">    package is developed using Cordova framework.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">FLUTTER</span> <span class="o">=</span> <span class="s2">&quot;Flutter&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a Flutter package. This attribute is used on software packages that are</span>
+<span class="sd">    developed using Flutter framework.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">NATIVE</span> <span class="o">=</span> <span class="s2">&quot;Native&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a native package. This attribute is used on software packages that are</span>
+<span class="sd">    pre-compiled within the app (.so-files, MACH-O executables)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">MAVEN</span> <span class="o">=</span> <span class="s2">&quot;Maven&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents a software package published on the Maven platform.&quot;&quot;&quot;</span>
+
+    <span class="n">NONE</span> <span class="o">=</span> <span class="s2">&quot;None&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a package with no specific type. This is used when the type of a package</span>
+<span class="sd">    is unknown or does not belong to any of the other categories.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="Relation">
+<a class="viewcode-back" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.Relation">[docs]</a>
+<span class="k">class</span> <span class="nc">Relation</span><span class="p">(</span><span class="n">StringEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Intended to be used to define the type of relation that a dependency has to</span>
+<span class="sd">    its application.</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">        This feature is proposed and not implemented as of version ``0.0.1-alpha``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">TRANSITIVE</span> <span class="o">=</span> <span class="s2">&quot;Transitive&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a transitive relationship between the dependency and the application. This</span>
+<span class="sd">    attribute can be used to indicate that the dependency is not directly required by the</span>
+<span class="sd">    application, but is instead required by another dependency.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">DIRECT</span> <span class="o">=</span> <span class="s2">&quot;Direct&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a direct relationship between the dependency and the application. This</span>
+<span class="sd">    attribute illustrates that the dependency is directly required by the application.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="HostType">
+<a class="viewcode-back" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.HostType">[docs]</a>
+<span class="k">class</span> <span class="nc">HostType</span><span class="p">(</span><span class="n">StringEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Intended to be used to categorize the type of connection an app has made.&quot;&quot;&quot;</span>
+
+    <span class="n">INVALID</span> <span class="o">=</span> <span class="s2">&quot;Invalid&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents an invalid or erroneous connection.&quot;&quot;&quot;</span>
+
+    <span class="n">TRACKER</span> <span class="o">=</span> <span class="s2">&quot;Tracker&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents a connection made to a tracking service.&quot;&quot;&quot;</span>
+
+    <span class="n">MALWARE</span> <span class="o">=</span> <span class="s2">&quot;Malware&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents a connection made to a known malware domain.&quot;&quot;&quot;</span>
+
+    <span class="n">OK</span> <span class="o">=</span> <span class="s2">&quot;Ok&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents a connection made to a safe and trusted domain.&quot;&quot;&quot;</span>
+
+    <span class="n">NOT_SET</span> <span class="o">=</span> <span class="s2">&quot;Not Set&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a connection for which the type has not been set or cannot</span>
+<span class="sd">    be determined.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="DataProtectionLevel">
+<a class="viewcode-back" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.DataProtectionLevel">[docs]</a>
+<span class="k">class</span> <span class="nc">DataProtectionLevel</span><span class="p">(</span><span class="n">StringEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents the different levels of data protection that can be applied to</span>
+<span class="sd">    transmitted data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">PRIVATE</span> <span class="o">=</span> <span class="s2">&quot;Private&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents data that is intended to be kept private and confidential.&quot;&quot;&quot;</span>
+
+    <span class="n">PUBLIC</span> <span class="o">=</span> <span class="s2">&quot;Public&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents data that can be freely shared with others.&quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="ProtectionLevel">
+<a class="viewcode-back" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.ProtectionLevel">[docs]</a>
+<span class="k">class</span> <span class="nc">ProtectionLevel</span><span class="p">(</span><span class="n">StringEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The ProtectionLevel class represents different permission protection levels</span>
+<span class="sd">    that are used in the Android permission system to protect user privacy and</span>
+<span class="sd">    security. (`Android Protection Levels`_)</span>
+
+<span class="sd">    .. _android protection levels: https://developer.android.com/reference/android/R.attr#protectionLevel</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">APP_PREDICTOR</span> <span class="o">=</span> <span class="s2">&quot;AppPredictor&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted to app prediction services.&quot;&quot;&quot;</span>
+
+    <span class="n">APPOP</span> <span class="o">=</span> <span class="s2">&quot;Appop&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted to AppOps services.&quot;&quot;&quot;</span>
+
+    <span class="n">COMPANION</span> <span class="o">=</span> <span class="s2">&quot;Companion&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted to companion devices.&quot;&quot;&quot;</span>
+
+    <span class="n">CONFIGURATOR</span> <span class="o">=</span> <span class="s2">&quot;Configurator&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted to app configurator services.&quot;&quot;&quot;</span>
+
+    <span class="n">DANGEROUS</span> <span class="o">=</span> <span class="s2">&quot;Dangerous&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for dangerous permissions that have to be approved by a user.&quot;&quot;&quot;</span>
+
+    <span class="n">DEVELOPMENT</span> <span class="o">=</span> <span class="s2">&quot;Development&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted to development tools and features.&quot;&quot;&quot;</span>
+
+    <span class="n">INCIDENTREPORTAPPROVER</span> <span class="o">=</span> <span class="s2">&quot;IncidentReportApprover&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted to incident report approver services.&quot;&quot;&quot;</span>
+
+    <span class="n">INSTALLER</span> <span class="o">=</span> <span class="s2">&quot;Installer&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted to app installer services.&quot;&quot;&quot;</span>
+
+    <span class="n">INSTANT</span> <span class="o">=</span> <span class="s2">&quot;Instant&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted to instant apps.&quot;&quot;&quot;</span>
+
+    <span class="n">INTERNAL</span> <span class="o">=</span> <span class="s2">&quot;Internal&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted to internal system components and apps.&quot;&quot;&quot;</span>
+
+    <span class="n">KNOWNSIGNER</span> <span class="o">=</span> <span class="s2">&quot;KnownSigner&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted to apps signed with a known signature.&quot;&quot;&quot;</span>
+
+    <span class="n">MODULE</span> <span class="o">=</span> <span class="s2">&quot;Module&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted to dynamic feature modules.&quot;&quot;&quot;</span>
+
+    <span class="n">NORMAL</span> <span class="o">=</span> <span class="s2">&quot;Normal&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for normal permissions that don&#39;t pose a significant risk to user privacy and security.&quot;&quot;&quot;</span>
+
+    <span class="n">OEM</span> <span class="o">=</span> <span class="s2">&quot;OEM&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted to OEM-specific apps and features.&quot;&quot;&quot;</span>
+
+    <span class="n">PRE23</span> <span class="o">=</span> <span class="s2">&quot;Pre23&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that were introduced in Android 6.0 (API level 23) or earlier.&quot;&quot;&quot;</span>
+
+    <span class="n">PREINSTALLED</span> <span class="o">=</span> <span class="s2">&quot;Preinstalled&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted to preinstalled system apps.&quot;&quot;&quot;</span>
+
+    <span class="n">PRIVILEGED</span> <span class="o">=</span> <span class="s2">&quot;Privileged&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted to privileged system apps.&quot;&quot;&quot;</span>
+
+    <span class="n">RECENTS</span> <span class="o">=</span> <span class="s2">&quot;Recents&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted to the recents screen.&quot;&quot;&quot;</span>
+
+    <span class="n">RETAILDEMO</span> <span class="o">=</span> <span class="s2">&quot;RetailDemo&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted to retail demo apps.&quot;&quot;&quot;</span>
+
+    <span class="n">ROLE</span> <span class="o">=</span> <span class="s2">&quot;Role&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted to app roles.&quot;&quot;&quot;</span>
+
+    <span class="n">RUNTIME</span> <span class="o">=</span> <span class="s2">&quot;Runtime&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted at runtime.&quot;&quot;&quot;</span>
+
+    <span class="n">SETUP</span> <span class="o">=</span> <span class="s2">&quot;Setup&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted to setup services.&quot;&quot;&quot;</span>
+
+    <span class="n">SIGNATURE</span> <span class="o">=</span> <span class="s2">&quot;Signature&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A permission that the system is to grant only if the requesting application</span>
+<span class="sd">    is signed with the same certificate as the application that declared the</span>
+<span class="sd">    permission.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">SIGNATUREORSYSTEM</span> <span class="o">=</span> <span class="s2">&quot;SignatureOrSystem&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Old synonym for ``signature|privileged``. Deprecated in API level 23.&quot;&quot;&quot;</span>
+
+    <span class="n">SYSTEM</span> <span class="o">=</span> <span class="s2">&quot;System&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted to system components.&quot;&quot;&quot;</span>
+
+    <span class="n">TEXTCLASSIFIER</span> <span class="o">=</span> <span class="s2">&quot;TextClassifier&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted to text classification services.&quot;&quot;&quot;</span>
+
+    <span class="n">VENDORPRIVILEGED</span> <span class="o">=</span> <span class="s2">&quot;VendorPrivileged&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted to vendor-specific apps and features.&quot;&quot;&quot;</span>
+
+    <span class="n">VERIFIER</span> <span class="o">=</span> <span class="s2">&quot;Verifier&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for permissions that are granted to package verifier services.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ProtectionLevel.colors">
+<a class="viewcode-back" href="../../../../api/utils/enum.html#mastf.MASTF.utils.enum.ProtectionLevel.colors">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">colors</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns protection levels categorized into three groups.</span>
+
+<span class="sd">        :return: categorized protection level groups.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;green&quot;</span><span class="p">:</span> <span class="p">(</span>
+                <span class="n">ProtectionLevel</span><span class="o">.</span><span class="n">SIGNATURE</span><span class="p">,</span>
+                <span class="n">ProtectionLevel</span><span class="o">.</span><span class="n">SIGNATUREORSYSTEM</span><span class="p">,</span>
+                <span class="n">ProtectionLevel</span><span class="o">.</span><span class="n">KNOWNSIGNER</span><span class="p">,</span>
+                <span class="n">ProtectionLevel</span><span class="o">.</span><span class="n">RUNTIME</span><span class="p">,</span>
+                <span class="n">ProtectionLevel</span><span class="o">.</span><span class="n">DEVELOPMENT</span><span class="p">,</span>
+                <span class="n">ProtectionLevel</span><span class="o">.</span><span class="n">PREINSTALLED</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="s2">&quot;red&quot;</span><span class="p">:</span> <span class="p">(</span>
+                <span class="n">ProtectionLevel</span><span class="o">.</span><span class="n">DANGEROUS</span><span class="p">,</span>
+                <span class="n">ProtectionLevel</span><span class="o">.</span><span class="n">SYSTEM</span><span class="p">,</span>
+                <span class="n">ProtectionLevel</span><span class="o">.</span><span class="n">OEM</span><span class="p">,</span>
+                <span class="n">ProtectionLevel</span><span class="o">.</span><span class="n">PRIVILEGED</span><span class="p">,</span>
+                <span class="n">ProtectionLevel</span><span class="o">.</span><span class="n">VENDORPRIVILEGED</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="s2">&quot;azure&quot;</span><span class="p">:</span> <span class="p">(</span>
+                <span class="n">ProtectionLevel</span><span class="o">.</span><span class="n">NORMAL</span><span class="p">,</span>
+                <span class="n">ProtectionLevel</span><span class="o">.</span><span class="n">COMPANION</span><span class="p">,</span>
+                <span class="n">ProtectionLevel</span><span class="o">.</span><span class="n">CONFIGURATOR</span><span class="p">,</span>
+                <span class="n">ProtectionLevel</span><span class="o">.</span><span class="n">PRE23</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">}</span></div>
+</div>
+
+
+
+<span class="k">class</span> <span class="nc">ComponentCategory</span><span class="p">(</span><span class="n">StringEnum</span><span class="p">):</span>
+    <span class="n">ACTIVITY</span> <span class="o">=</span> <span class="s2">&quot;Activity&quot;</span>
+    <span class="n">SERVICE</span> <span class="o">=</span> <span class="s2">&quot;Service&quot;</span>
+    <span class="n">RECEIVER</span> <span class="o">=</span> <span class="s2">&quot;Receiver&quot;</span>
+    <span class="n">PROVIDER</span> <span class="o">=</span> <span class="s2">&quot;Provider&quot;</span>
+    <span class="n">APPLICATION</span> <span class="o">=</span> <span class="s2">&quot;Application&quot;</span>
+
+
+<span class="c1"># Small workaround to set an additional static attribute for Django models</span>
+<span class="k">def</span> <span class="nf">isstringenum</span><span class="p">(</span><span class="n">member</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">inspect</span><span class="o">.</span><span class="n">isclass</span><span class="p">(</span><span class="n">member</span><span class="p">)</span>
+        <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">member</span><span class="p">,</span> <span class="n">StringEnum</span><span class="p">)</span>
+        <span class="ow">and</span> <span class="n">member</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">!=</span> <span class="s2">&quot;StringEnum&quot;</span>
+    <span class="p">)</span>
+
+
+<span class="n">mod</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="vm">__name__</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">clazz</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">isstringenum</span><span class="p">):</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">clazz</span><span class="p">,</span> <span class="s2">&quot;choices&quot;</span><span class="p">,</span> <span class="p">[(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">clazz</span><span class="p">])</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, MatrixEditor.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

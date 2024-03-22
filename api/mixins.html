@@ -704,7 +704,7 @@ context data automatically.</p>
 <h2>View Classes<a class="headerlink" href="#view-classes" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="mastf.MASTF.mixins.TemplateAPIView">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mastf.MASTF.mixins.</span></span><span class="sig-name descname"><span class="pre">TemplateAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mastf.MASTF.mixins.TemplateAPIView" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mastf.MASTF.mixins.</span></span><span class="sig-name descname"><span class="pre">TemplateAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mastf/MASTF/mixins.html#TemplateAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mastf.MASTF.mixins.TemplateAPIView" title="Link to this definition"></a></dt>
 <dd><p>Base class for all Django views that use templates to render HTML responses.</p>
 <p>This class is a subclass of Django’s built-in <code class="docutils literal notranslate"><span class="pre">TemplateView</span></code> class, and
 provides additional functionality explicitly for web views. Specifically, the
@@ -731,13 +731,13 @@ name that the view will redirect to if an error occurs during processing. If
 ‘default_redirect’ is not set, the view will redirect to the dashboard page.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="mastf.MASTF.mixins.TemplateAPIView.check_object_permissions">
-<span class="sig-name descname"><span class="pre">check_object_permissions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#mastf.MASTF.mixins.TemplateAPIView.check_object_permissions" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">check_object_permissions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mastf/MASTF/mixins.html#TemplateAPIView.check_object_permissions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mastf.MASTF.mixins.TemplateAPIView.check_object_permissions" title="Link to this definition"></a></dt>
 <dd><p>Validates if the current user has appropriate permissions to access the given object.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mastf.MASTF.mixins.TemplateAPIView.check_permissions">
-<span class="sig-name descname"><span class="pre">check_permissions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mastf.MASTF.mixins.TemplateAPIView.check_permissions" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">check_permissions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mastf/MASTF/mixins.html#TemplateAPIView.check_permissions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mastf.MASTF.mixins.TemplateAPIView.check_permissions" title="Link to this definition"></a></dt>
 <dd><p>Validates whether the request’s user has permissions to access this view.</p>
 </dd></dl>
 
@@ -749,7 +749,7 @@ name that the view will redirect to if an error occurs during processing. If
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mastf.MASTF.mixins.TemplateAPIView.get_object">
-<span class="sig-name descname"><span class="pre">get_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk_field</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mastf.MASTF.mixins.TemplateAPIView.get_object" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk_field</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mastf/MASTF/mixins.html#TemplateAPIView.get_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mastf.MASTF.mixins.TemplateAPIView.get_object" title="Link to this definition"></a></dt>
 <dd><p>Returns a project mapped to a given primary key</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -769,7 +769,7 @@ name that the view will redirect to if an error occurs during processing. If
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mastf.MASTF.mixins.TemplateAPIView.on_dispatch_error">
-<span class="sig-name descname"><span class="pre">on_dispatch_error</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mastf.MASTF.mixins.TemplateAPIView.on_dispatch_error" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">on_dispatch_error</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mastf/MASTF/mixins.html#TemplateAPIView.on_dispatch_error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mastf.MASTF.mixins.TemplateAPIView.on_dispatch_error" title="Link to this definition"></a></dt>
 <dd><p>Redirects to a default page if an exception was raised</p>
 </dd></dl>
 
@@ -791,7 +791,7 @@ name that the view will redirect to if an error occurs during processing. If
 <h2>Mixin Classes<a class="headerlink" href="#mixin-classes" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="mastf.MASTF.mixins.ContextMixinBase">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mastf.MASTF.mixins.</span></span><span class="sig-name descname"><span class="pre">ContextMixinBase</span></span><a class="headerlink" href="#mastf.MASTF.mixins.ContextMixinBase" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mastf.MASTF.mixins.</span></span><span class="sig-name descname"><span class="pre">ContextMixinBase</span></span><a class="reference internal" href="../_modules/mastf/MASTF/mixins.html#ContextMixinBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mastf.MASTF.mixins.ContextMixinBase" title="Link to this definition"></a></dt>
 <dd><p>A Django mixin that provides additional context variables to a view.</p>
 <p>This mixin adds the following context variables to the view:</p>
 <ul class="simple">
@@ -835,7 +835,7 @@ Django’s documentation on templates and context processors.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mastf.MASTF.mixins.ContextMixinBase.prepare_context_data">
-<span class="sig-name descname"><span class="pre">prepare_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#mastf.MASTF.mixins.ContextMixinBase.prepare_context_data" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">prepare_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/mastf/MASTF/mixins.html#ContextMixinBase.prepare_context_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mastf.MASTF.mixins.ContextMixinBase.prepare_context_data" title="Link to this definition"></a></dt>
 <dd><p>Inserts additional fields into the context of this view.</p>
 </dd></dl>
 
@@ -843,11 +843,11 @@ Django’s documentation on templates and context processors.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="mastf.MASTF.mixins.VulnContextMixin">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mastf.MASTF.mixins.</span></span><span class="sig-name descname"><span class="pre">VulnContextMixin</span></span><a class="headerlink" href="#mastf.MASTF.mixins.VulnContextMixin" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mastf.MASTF.mixins.</span></span><span class="sig-name descname"><span class="pre">VulnContextMixin</span></span><a class="reference internal" href="../_modules/mastf/MASTF/mixins.html#VulnContextMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mastf.MASTF.mixins.VulnContextMixin" title="Link to this definition"></a></dt>
 <dd><p>Mixin that applies vulnerability statistics to the context of a view.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="mastf.MASTF.mixins.VulnContextMixin.apply_vuln_context">
-<span class="sig-name descname"><span class="pre">apply_vuln_context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vuln</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#mastf.MASTF.mixins.VulnContextMixin.apply_vuln_context" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">apply_vuln_context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vuln</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/mastf/MASTF/mixins.html#VulnContextMixin.apply_vuln_context"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mastf.MASTF.mixins.VulnContextMixin.apply_vuln_context" title="Link to this definition"></a></dt>
 <dd><p>Inserts vulnerability data according to the given input stats.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -861,7 +861,7 @@ Django’s documentation on templates and context processors.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mastf.MASTF.mixins.VulnContextMixin.get_vuln_context">
-<span class="sig-name descname"><span class="pre">get_vuln_context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#mastf.MASTF.mixins.VulnContextMixin.get_vuln_context" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_vuln_context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/mastf/MASTF/mixins.html#VulnContextMixin.get_vuln_context"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mastf.MASTF.mixins.VulnContextMixin.get_vuln_context" title="Link to this definition"></a></dt>
 <dd><p>Returns HTML information about a vulnerability statistic.</p>
 <p>The returned object has the following structure:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -893,7 +893,7 @@ Django’s documentation on templates and context processors.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="mastf.MASTF.mixins.UserProjectMixin">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mastf.MASTF.mixins.</span></span><span class="sig-name descname"><span class="pre">UserProjectMixin</span></span><a class="headerlink" href="#mastf.MASTF.mixins.UserProjectMixin" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mastf.MASTF.mixins.</span></span><span class="sig-name descname"><span class="pre">UserProjectMixin</span></span><a class="reference internal" href="../_modules/mastf/MASTF/mixins.html#UserProjectMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mastf.MASTF.mixins.UserProjectMixin" title="Link to this definition"></a></dt>
 <dd><p>Mixin that adds project-related context variables to a view.</p>
 <p>This mixin provides the <em>apply_project_context</em> method, which adds the following
 context variables to the view:</p>
@@ -932,7 +932,7 @@ class and adding it to the list of mixins in the class definition. For example:<
 
 <dl class="py class">
 <dt class="sig sig-object py" id="mastf.MASTF.mixins.TopVulnerableProjectsMixin">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mastf.MASTF.mixins.</span></span><span class="sig-name descname"><span class="pre">TopVulnerableProjectsMixin</span></span><a class="headerlink" href="#mastf.MASTF.mixins.TopVulnerableProjectsMixin" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mastf.MASTF.mixins.</span></span><span class="sig-name descname"><span class="pre">TopVulnerableProjectsMixin</span></span><a class="reference internal" href="../_modules/mastf/MASTF/mixins.html#TopVulnerableProjectsMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mastf.MASTF.mixins.TopVulnerableProjectsMixin" title="Link to this definition"></a></dt>
 <dd><p>Mixin that filters for the most vulnerable project.</p>
 <p>Returns a namespace object (dictionary) that includes the following attribures:</p>
 <ul class="simple">
@@ -942,7 +942,7 @@ class and adding it to the list of mixins in the class definition. For example:<
 </ul>
 <dl class="py method">
 <dt class="sig sig-object py" id="mastf.MASTF.mixins.TopVulnerableProjectsMixin.get_top_vulnerable_projects">
-<span class="sig-name descname"><span class="pre">get_top_vulnerable_projects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">projects</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../ref/models/base_models.html#mastf.MASTF.models.namespace" title="mastf.MASTF.models.base.namespace"><span class="pre">namespace</span></a></span></span><a class="headerlink" href="#mastf.MASTF.mixins.TopVulnerableProjectsMixin.get_top_vulnerable_projects" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_top_vulnerable_projects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">projects</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../ref/models/base_models.html#mastf.MASTF.models.namespace" title="mastf.MASTF.models.base.namespace"><span class="pre">namespace</span></a></span></span><a class="reference internal" href="../_modules/mastf/MASTF/mixins.html#TopVulnerableProjectsMixin.get_top_vulnerable_projects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mastf.MASTF.mixins.TopVulnerableProjectsMixin.get_top_vulnerable_projects" title="Link to this definition"></a></dt>
 <dd><p>Returns up to three top vulnerable projects of the given list.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -961,7 +961,7 @@ class and adding it to the list of mixins in the class definition. For example:<
 
 <dl class="py class">
 <dt class="sig sig-object py" id="mastf.MASTF.mixins.ScanTimelineMixin">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mastf.MASTF.mixins.</span></span><span class="sig-name descname"><span class="pre">ScanTimelineMixin</span></span><a class="headerlink" href="#mastf.MASTF.mixins.ScanTimelineMixin" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mastf.MASTF.mixins.</span></span><span class="sig-name descname"><span class="pre">ScanTimelineMixin</span></span><a class="reference internal" href="../_modules/mastf/MASTF/mixins.html#ScanTimelineMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mastf.MASTF.mixins.ScanTimelineMixin" title="Link to this definition"></a></dt>
 <dd><p>Simple mixin class that provides a function to collect scan data.</p>
 <p>The returned data may be used as timeline data or display values in a
 table. Note that the number of included scans can be reduced with the
@@ -973,7 +973,7 @@ following <em>GET</em> parameters:</p>
 </ul>
 <dl class="py method">
 <dt class="sig sig-object py" id="mastf.MASTF.mixins.ScanTimelineMixin.get_scan_timeline">
-<span class="sig-name descname"><span class="pre">get_scan_timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">projects</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mastf.MASTF.mixins.ScanTimelineMixin.get_scan_timeline" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_scan_timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">projects</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mastf/MASTF/mixins.html#ScanTimelineMixin.get_scan_timeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mastf.MASTF.mixins.ScanTimelineMixin.get_scan_timeline" title="Link to this definition"></a></dt>
 <dd><p>Collects information about scans from the given projects.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1004,7 +1004,7 @@ following <em>GET</em> parameters:</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, MatrixEditor.</p>
+    <p>&#169; Copyright 2024, MatrixEditor.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
