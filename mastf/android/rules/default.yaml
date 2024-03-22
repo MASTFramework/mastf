@@ -1,0 +1,296 @@
+# Insecure SSL
+- rule-id: android-insecure-ssl-weak-cipher-suites
+  patterns:
+    - javax\.net\.ssl
+    - (SSLSocketFactory|HttpsURLConnection)\s*\.\s*setEnabledCipherSuites\s*\(\s*new\s*String\[\]\s*{\s*".*DES.*|.*RC4.*"
+  meta:
+    filters:
+      file_ext: java
+    severity: high
+    template: insecure-implementation-of-ssl-with-weak-cipher-suites
+    vulnerability: false
+
+- rule-id: android-insecure-ssl-sslv3-or-tlsv1
+  patterns:
+    - javax\.net\.ssl
+    - setEnabledProtocols\s*\(\s*new\s*String\[\]\s*{\s*("SSLv3"|.*TLSv1.*)
+  meta:
+    filters:
+      file_ext: java
+    severity:
+    template: insecure-implementation-of-ssl-with-sslv3-or-tlsv1
+    vulnerability: false
+
+- rule-id: android-hardcoded-ipv4
+  pattern: \d{1,3}(\.\d{1,3}){3}
+  meta:
+    filters:
+      file_ext: java
+    severity: Low
+    template: hardcoded-ip-address
+    vulnerability: false
+
+- rule-id: android-hidden-ui
+  patterns:
+    - text: setVisibility\s*\(\s*View.GONE
+      mode: or
+    - text: setVisibility\s*\(\s*View.INVISIBLE
+      mode: or
+    - text: setVisibility\(\s*View.GONE\s*\|\s*View.INVISIBLE
+      mode: or
+  meta:
+    filters:
+      file_ext: java
+    severity: Medium
+    template: hidden-ui-detection
+    vulnerability: false
+
+- rule-id: android-external-file-loading
+  patterns:
+    - webkit\.WebView
+    - loadUrl\s*\(\s*getExternalStorageDirectory\s*\(?
+  meta:
+    filters:
+      file_ext: java
+    severity: High
+    template: external-file-loading-in-webview
+    vulnerability: false
+
+# temporary Files
+- rule-id: android-temporary-file-(java.io.file)
+  patterns:
+    - java\.io\.File
+    - \bnew\s+File\s*\(\s*.*(?:File|createNewFile|createTempFile)
+  meta:
+    filters:
+      file_ext: java, kt
+    severity: medium
+    template: creation-of-temporary-file-(java.io.file)
+    vulnerability: false
+
+- rule-id: android-temporary-file-(java.io.fileoutputstream)
+  patterns:
+    - java\.io\.FileOutputStream
+    - \bnew\s+FileOutputStream\s*\(\s*.*(?:File|createNewFile)
+  meta:
+    filters:
+      file_ext: java, kt
+    severity: medium
+    template: creation-of-temporary-file-(java.io.fileoutputstream)
+    vulnerability: false
+
+- rule-id: android-temporary-file-(android.content.contextwrapper)
+  patterns:
+    - android\.content\.ContextWrapper
+    - \bnew\s+ContextWrapper\s*\(\s*.*(?:File|createNewFile).*\)
+  meta:
+    filters:
+      file_ext: java, kt
+    severity: medium
+    template: creation-of-temporary-file-(android.content.contextwrapper)
+    vulnerability: false
+
+# additional rules
+- rule-id: android-external-directory-write
+  patterns:
+    - text: .*\.openFileOutput.*\((?!.*Context\.getFilesDir)
+      mode: or
+    - text: \.getExternalStorage\s*\(
+      mode: or
+    - text: \.getExternalFilesDir\s*\(
+      mode: or
+  meta:
+    filters:
+      file_ext: java
+    severity: Medium
+    template: external-directory-write
+    vulnerability: false
+
+- rule-id: android-tempfile-creation
+  patterns:
+    - text: .*File.createTempFile.*
+      mode: or
+    - text: .*File.createTempDirectory.*
+      mode: or
+  meta:
+    filters:
+      file_ext: java
+    severity: Medium
+    template: creation-of-temporary-files
+    vulnerability: false
+
+- rule-id: android-webview-javascript-execution
+  patterns:
+    - text: .*setJavaScriptEnabled\(
+      mode: or
+    - text: .*getSettings\(\).setJavaScriptEnabled\(
+      mode: or
+    - text: .*addJavascriptInterface\(
+      mode: or
+  meta:
+    filters:
+      file_ext: java
+    severity: High
+    template: webview-with-javascript-execution-enabled
+    vulnerability: false
+
+- rule-id: android-clipboard-listening
+  patterns:
+    - text: .*ClipboardManager\.addPrimaryClipChangedListener.*
+      mode: or
+    - text: .*ClipboardManagerCompat\.addPrimaryClipChangedListener.*
+      mode: or
+  meta:
+    filters:
+      file_ext: java
+    severity: Medium
+    template: clipboard-listening
+    vulnerability: false
+
+- rule-id: android-clipboard-copy
+  patterns:
+    - text: .*ClipboardManager\.setPrimaryClip.*
+      mode: or
+    - text: .*ClipboardManagerCompat\.setPrimaryClip.*
+      mode: or
+  meta:
+    filters:
+      file_ext: java
+    severity: Medium
+    template: clipboard-copy
+    vulnerability: false
+
+- rule-id: android-md5-hashes
+  patterns:
+    - text: .*MessageDigest\.getInstance\(\"MD5\"\).*
+      mode: or
+    - text: .*[Hh]ashUtil\.md5Hash\(.*\).*
+      mode: or
+    - text: DigestUtils\.md5\(
+      mode: or
+  meta:
+    filters:
+      file_ext: java
+    severity: High
+    template: usage-of-md5-hashes
+    vulnerability: false
+
+# Class loading
+- rule-id: android-dynamic-class-loading-reflection
+  patterns:
+    - .*\.forName\(
+    - .*\.newInstance\(
+  meta:
+    filters:
+      file_ext: java
+    severity: High
+    template: dynamic-class-loading-(reflection)
+    vulnerability: false
+
+- rule-id: android-dynamic-class-loading-dexclassloader
+  patterns:
+    - text: new\s*DexClassLoader\(
+    - text: new\s*ClassLoader\(
+    - text: new\s*URLClassLoader\(
+    - text: new\s*SecureClassLoader\(
+  meta:
+    filters:
+      file_ext: java
+    severity: High
+    template: dynamic-class-loading-dexclassloader
+    vulnerability: false
+
+- rule-id: android-broadcast-intent-transmission
+  patterns:
+    - text: ".*sendBroadcast(AsUser)?\\(.*"
+      mode: or
+    - text: ".*sendOrderedBroadcast(AsUser)?\\(.*"
+      mode: or
+    - text: ".*sendStickyBroadcast(AsUser)?\\(.*"
+      mode: or
+  meta:
+    filters:
+      file_ext: "java, kotlin"
+    severity: "Medium"
+    template: "broadcast-intent-transmission"
+    vulnerability: false
+
+- rule-id: android-tcp-server-sockets
+  patterns:
+    - .*\.accept\(.*
+    - net\.ServerSocket
+    - new\s*ServerSocket
+  meta:
+    filters:
+      file_ext: "java, kotlin"
+    severity: "Medium"
+    template: "tcp-server-sockets"
+    vulnerability: false
+
+- rule-id: android-weak-cryptographic-hashing
+  patterns:
+    - ".*MessageDigest\\.getInstance\\(\"(MD5|SHA-1)\"\\).*"
+  meta:
+    filter:
+      file_ext: "java, kotlin"
+    severity: "High"
+    template: "weak-cryptographic-hashing"
+    vulnerability: false
+
+- rule-id: android-root-detection
+  patterns:
+    - text: ".*Build\\.TAGS\\.contains\\(\"test-keys\"\\).*"
+      mode: or
+    - text: ".*new\\s+File\\(\"/system/app/Superuser\\.apk\"\\).*"
+      mode: or
+    - text: \/system\/app\/Superuser.apk
+      mode: or
+    - text: isDeviceRooted\(\s*\)
+      mode: or
+    - text: \/system\/bin\/failsafe\/su
+      mode: or
+    - text: \/system\/bin\/su
+      mode: or
+    - text: \/system\/xbin\/su
+      mode: or
+    - text: \/sbin\/su
+      mode: or
+    - text: \/system\/sd\/xbin\/su
+      mode: or
+    - text: \"\/system\/xbin\/which\".*\"su\"
+      mode: or
+    - text: RootTools\.isAccessGiven\(
+      mode: or
+  meta:
+    filter:
+      file_ext: "java, kotlin"
+    severity: "Secure"
+    template: "root-detection"
+    vulnerability: false
+
+- rule-id: android-raw-sql-queries
+  patterns:
+    - android\.database\.sqlite
+    - text: ".*execute\\s*\\(\\s*\"SELECT\\s*\\*\\s*FROM\\s*\\w+\"\\s*\\).*"
+      mode: or
+    - text: "rawQuery\\(|execSQL\\("
+      mode: or
+  meta:
+    filter:
+      file_ext: "java, kotlin"
+    severity: "High"
+    template: "raw-sql-queries"
+    vulnerability: false
+
+- rule-id: android-loading-native-libraries
+  patterns:
+    - text: ".*System\\.loadLibrary\\(\\s*\"\\w+\"\\s*\\).*"
+      mode: or
+    - System\.load\(
+  meta:
+    filter:
+      file_ext: "java, kotlin"
+    severity: "Medium"
+    template: "loading-native-libraries"
+    vulnerability: false
+

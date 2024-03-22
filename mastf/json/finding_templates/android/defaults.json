@@ -1,0 +1,325 @@
+{
+    "templates": [
+        {
+            "title": "Insecure Implementation of SSL with Weak Cipher Suites",
+            "description": "This rule detects insecure implementations of SSL in Android applications' source code where the setEnabledCipherSuites method is called with an array of cipher suites that include weak encryption algorithms such as DES or RC4. These weak cipher suites are vulnerable to cryptographic attacks and should be avoided.",
+            "risk": "Using weak cipher suites in SSL implementations can lead to the compromise of sensitive data due to vulnerabilities in the encryption algorithms. Attackers can exploit these weaknesses to decrypt the transmitted data.",
+            "mitigation": "To mitigate this security risk, ensure that only strong and secure cipher suites are enabled in the SSL configuration. Avoid the use of weak encryption algorithms like DES and RC4 and prefer modern, secure cipher suites.",
+            "article": "android/insecure-ssl",
+            "default_severity": "High",
+            "meta_cvss": "7.5 (High)",
+            "meta_cwe": "CWE-327",
+            "meta_masvs": "V6: Cryptography and Code Tampering - Verify that secure protocols and cipher suites are used.",
+            "is_html": true
+        },
+        {
+            "title": "Creation of Temporary File (java.io.File)",
+            "description": "This rule detects insecure practices in Android applications' source code where temporary files are created using the `java.io.File` class without appropriate security measures.",
+            "risk": "Insecure creation of temporary files can lead to security vulnerabilities, such as unauthorized access or leakage of sensitive data. Attackers can exploit these insecure files for malicious purposes.",
+            "mitigation": "To mitigate this security risk, use secure APIs provided by the Android framework, such as `Context.getCacheDir()` or `Context.getFilesDir()`, to create and manage temporary files. These APIs ensure appropriate permissions and storage isolation.",
+            "article": "android/files",
+            "default_severity": "Medium",
+            "meta_cvss": "5.5 (Medium)",
+            "meta_cwe": "CWE-377",
+            "meta_masvs": "V2: Secure Storage - Implement secure storage solutions based on application requirements."
+        },
+        {
+            "title": "Creation of Temporary File (java.io.FileOutputStream)",
+            "description": "This rule detects insecure practices in Android applications' source code where temporary files are created using the `java.io.FileOutputStream` class without appropriate security measures.",
+            "risk": "Insecure creation of temporary files can lead to security vulnerabilities, such as unauthorized access or leakage of sensitive data. Attackers can exploit these insecure files for malicious purposes.",
+            "mitigation": "To mitigate this security risk, use secure APIs provided by the Android framework, such as `Context.getCacheDir()` or `Context.getFilesDir()`, to create and manage temporary files. These APIs ensure appropriate permissions and storage isolation.",
+            "article": "android/files",
+            "default_severity": "Medium",
+            "meta_cvss": "5.5 (Medium)",
+            "meta_cwe": "CWE-377",
+            "meta_masvs": "V2: Secure Storage - Implement secure storage solutions based on application requirements."
+        },
+        {
+            "title": "Creation of Temporary File (android.content.ContextWrapper)",
+            "description": "This rule detects insecure practices in Android applications' source code where temporary files are created using the `android.content.ContextWrapper` class without appropriate security measures.",
+            "risk": "Insecure creation of temporary files can lead to security vulnerabilities, such as unauthorized access or leakage of sensitive data. Attackers can exploit these insecure files for malicious purposes.",
+            "mitigation": "To mitigate this security risk, use secure APIs provided by the Android framework, such as `Context.getCacheDir()` or `Context.getFilesDir()`, to create and manage temporary files. These APIs ensure appropriate permissions and storage isolation.",
+            "article": "android/files",
+            "default_severity": "Medium",
+            "meta_cvss": "5.5 (Medium)",
+            "meta_cwe": "CWE-377",
+            "meta_masvs": "V2: Secure Storage - Implement secure storage solutions based on application requirements."
+        },
+        {
+            "title": "Root Detection Enabled (Checking for Common Root Access Paths)",
+            "description": "This rule detects the presence of root detection mechanisms in Android applications' source code that check for common root access paths or files on the device.",
+            "risk": "Checking for common root access paths can help identify potential root access. However, relying solely on this method for root detection may not be comprehensive enough, as root access can be obtained without leaving traces in these common paths.",
+            "mitigation": "To mitigate this security risk, supplement path-based root detection with other techniques, such as verifying the integrity of system files or using system calls to check for root access. Implement a multi-layered approach to increase the effectiveness of root detection.",
+            "article": "android/security",
+            "default_severity": "Secure",
+            "meta_cvss": "5.5 (Medium)",
+            "meta_cwe": "CWE-330",
+            "meta_masvs": "V9: Device Security - Implement runtime application self-protection (RASP) mechanisms."
+        },
+        {
+            "title": "Root Detection Enabled (Using System Properties)",
+            "description": "This rule detects the presence of root detection mechanisms in Android applications' source code that examine system properties to check for root access.",
+            "risk": "Examining system properties can help identify potential root access. However, relying solely on system properties for root detection can be bypassed by custom ROMs or root-hiding techniques that manipulate these properties.",
+            "mitigation": "To mitigate this security risk, combine system property checks with other root detection techniques to increase the effectiveness of root detection. Regularly update the root detection mechanism to address new methods used to hide root access.",
+            "article": "android/security",
+            "default_severity": "Medium",
+            "meta_cvss": "5.5 (Medium)",
+            "meta_cwe": "CWE-330",
+            "meta_masvs": "V9: Device Security - Implement runtime application self-protection (RASP) mechanisms."
+        },
+        {
+            "title": "Root Detection Enabled (Using Shell Commands)",
+            "description": "This rule detects the presence of root detection mechanisms in Android applications' source code that execute shell commands to check for root access.",
+            "risk": "Using shell commands for root detection allows apps to check for root access by executing specific commands and examining the output. However, if the root detection implementation is not robust or the commands used are outdated, it may result in false negatives or false positives, compromising the effectiveness of root detection.",
+            "mitigation": "To mitigate this security risk, ensure that root detection mechanisms using shell commands are implemented securely and use reliable and up-to-date commands. Regularly review and update the root detection implementation to address new rooting methods.",
+            "article": "android/security",
+            "default_severity": "Medium",
+            "meta_cvss": "5.5 (Medium)",
+            "meta_cwe": "CWE-330",
+            "meta_masvs": "V9: Device Security - Implement runtime application self-protection (RASP) mechanisms."
+        },
+        {
+            "title": "Android Logging Detected",
+            "description": "The application uses Android logging, which may expose sensitive information.",
+            "risk": "The usage of Android logging can lead to the exposure of sensitive information, including passwords, API keys, and user data.",
+            "mitigation": "It is recommended to use a secure logging framework, such as the Android Logging API with appropriate log levels and log filtering.",
+            "article": "android/logging",
+            "default_severity": "Medium",
+            "meta_cvss": "5.4",
+            "meta_cwe": "CWE-532",
+            "meta_masvs": "V2"
+        },
+        {
+            "title": "Hardcoded IP Address",
+            "description": "The application contains hardcoded IP addresses, which can be exploited for targeted attacks or hinder application flexibility.",
+            "risk": "Hardcoded IP addresses increase the risk of unauthorized access, make application migration and maintenance difficult, and may hinder scalability.",
+            "mitigation": "Avoid hardcoding IP addresses and use dynamic configuration options, allowing flexibility in server and network changes.",
+            "article": "android/ip-address-exposure",
+            "default_severity": "Low",
+            "meta_cvss": "3.9",
+            "meta_cwe": "CWE-798",
+            "meta_masvs": "V4"
+        },
+        {
+            "title": "Hidden UI Detection",
+            "description": "The application may be using a hidden user interface (UI) element, potentially indicating suspicious or malicious behavior.",
+            "risk": "The presence of a hidden UI in an application can suggest attempts to deceive or hide functionality from users, raising concerns about the app's integrity and potential security risks.",
+            "mitigation": "Regularly review and analyze the application's codebase, specifically examining UI-related code, to identify and remove any hidden UI elements that are not intended for legitimate purposes.",
+            "article": "android/hidden-ui-detection",
+            "default_severity": "Medium",
+            "meta_cvss": "6.1",
+            "meta_cwe": "CWE-749",
+            "meta_masvs": "V10"
+        },
+        {
+            "title": "External File Loading in WebView",
+            "description": "The application loads external files in WebView, which may introduce security vulnerabilities and potential code execution risks.",
+            "risk": "Loading external files in WebView can expose the application to malicious content injection, remote code execution, and unauthorized access to device resources.",
+            "mitigation": "Ensure that the application properly validates and restricts external file loading in WebView, using appropriate content security policies and input validation techniques.",
+            "article": "android/external-file-loading",
+            "default_severity": "High",
+            "meta_cvss": "8.3",
+            "meta_cwe": "CWE-601",
+            "meta_masvs": "V7"
+        },
+        {
+            "title": "External Directory Write",
+            "description": "The application writes data to an external directory, which may pose security risks and expose sensitive information.",
+            "risk": "Writing data to an external directory can lead to unauthorized access, data leakage, and potential manipulation of sensitive information by malicious actors.",
+            "mitigation": "Ensure that the application follows secure coding practices, validates and restricts write access to external directories, and properly encrypts sensitive data when stored externally.",
+            "article": "android/external-directory-write",
+            "default_severity": "Medium",
+            "meta_cvss": "5.5",
+            "meta_cwe": "CWE-276",
+            "meta_masvs": "V8: Data Storage and Privacy"
+        },
+        {
+            "title": "Creation of Temporary Files",
+            "description": "The application creates temporary files without proper security measures, which can lead to security vulnerabilities and data leakage.",
+            "risk": "Creating temporary files without appropriate security measures can expose sensitive information, facilitate unauthorized access, and lead to potential data leakage.",
+            "mitigation": "Ensure that the application follows secure coding practices for handling temporary files, such as using secure temporary file creation methods and properly managing their lifecycle.",
+            "article": "android/tempfile-creation",
+            "default_severity": "Medium",
+            "meta_cvss": "6.8",
+            "meta_cwe": "CWE-377",
+            "meta_masvs": "V10: Cryptography"
+        },
+        {
+            "title": "WebView with JavaScript Execution Enabled",
+            "description": "The application utilizes WebView with JavaScript execution enabled, potentially introducing security risks and vulnerabilities.",
+            "risk": "Enabling JavaScript execution in WebView can expose the application to cross-site scripting (XSS) attacks, malicious code injection, and unauthorized access to device resources.",
+            "mitigation": "Ensure that JavaScript execution in WebView is properly controlled and restricted by implementing appropriate security measures, such as input validation and output encoding.",
+            "article": "android/webview-javascript-execution",
+            "default_severity": "High",
+            "meta_cvss": "9.3",
+            "meta_cwe": "CWE-79",
+            "meta_masvs": "V7: Client Code Quality"
+        },
+        {
+            "title": "Clipboard Listening",
+            "description": "The application listens to the clipboard, which may introduce privacy and security risks by potentially capturing sensitive user information.",
+            "risk": "Listening to the clipboard can lead to unauthorized access to sensitive data, including passwords, personal information, and other confidential data.",
+            "mitigation": "Ensure that clipboard listening is implemented responsibly, with appropriate user consent and privacy considerations. Limit the scope of clipboard data access to only what is necessary for legitimate app functionality.",
+            "article": "android/clipboard-listening",
+            "default_severity": "Medium",
+            "meta_cvss": "6.1",
+            "meta_cwe": "CWE-200",
+            "meta_masvs": "V6: Secure Data Storage"
+        },
+        {
+            "title": "Clipboard Copy",
+            "description": "The application copies sensitive information to the clipboard, which may pose security risks by potentially exposing the data to unauthorized access or unintended disclosure.",
+            "risk": "Copying sensitive information to the clipboard can lead to unintended data exposure, especially if the clipboard contents are accessible by other applications or if the device is compromised.",
+            "mitigation": "Ensure that sensitive data copied to the clipboard is cleared promptly and not left exposed for longer than necessary. Implement appropriate access controls and secure storage mechanisms for sensitive data.",
+            "article": "android/clipboard-copy",
+            "default_severity": "Medium",
+            "meta_cvss": "6.1",
+            "meta_cwe": "CWE-200",
+            "meta_masvs": "V6: Secure Data Storage"
+        },
+        {
+            "title": "Usage of MD5 Hashes",
+            "description": "The application utilizes MD5 hashes for cryptographic purposes, which is considered weak and insecure.",
+            "risk": "Using MD5 hashes for cryptographic purposes poses security risks due to the vulnerability of MD5 to collision attacks and its weak resistance against pre-image and second pre-image attacks.",
+            "mitigation": "Replace the usage of MD5 hashes with stronger and more secure hash algorithms, such as SHA-256 or bcrypt, to ensure the integrity and confidentiality of sensitive data.",
+            "article": "android/md5-hashes",
+            "default_severity": "High",
+            "meta_cvss": "9.0",
+            "meta_cwe": "CWE-327",
+            "meta_masvs": "V7: Client Code Quality"
+        },
+        {
+            "title": "Dynamic Class Loading (Reflection)",
+            "description": "The application utilizes reflection to dynamically load classes, which can introduce security vulnerabilities and make the app prone to code injection attacks.",
+            "risk": "Using reflection for dynamic class loading can allow an attacker to inject malicious code or manipulate the behavior of the application at runtime, leading to unauthorized access, data breaches, and other security risks.",
+            "mitigation": "Avoid or minimize the use of reflection for dynamic class loading. If dynamic class loading is required, ensure proper input validation, and implement strong security controls to prevent code injection attacks.",
+            "article": "android/dynamic-class-loading-reflection",
+            "default_severity": "High",
+            "meta_cvss": "8.8",
+            "meta_cwe": "CWE-471",
+            "meta_masvs": "V7: Client Code Quality"
+        },
+        {
+            "title": "Dynamic Class Loading (DexClassLoader)",
+            "description": "The application uses DexClassLoader to dynamically load classes, which can introduce security vulnerabilities and make the app prone to code injection attacks.",
+            "risk": "Utilizing DexClassLoader for dynamic class loading can allow an attacker to inject malicious code or manipulate the application's behavior at runtime, leading to unauthorized access, data breaches, and other security risks.",
+            "mitigation": "Minimize the use of DexClassLoader for dynamic class loading. If its usage is necessary, ensure that the loaded classes come from trusted and verified sources. Implement strong input validation and security controls to mitigate code injection risks.",
+            "article": "android/dynamic-class-loading-dexclassloader",
+            "default_severity": "High",
+            "meta_cvss": "8.8",
+            "meta_cwe": "CWE-471",
+            "meta_masvs": "V7: Client Code Quality"
+        },
+        {
+            "title": "Broadcast Intent Transmission",
+            "description": "The app transmits broadcast intents without proper validation or restriction.",
+            "risk": "Transmitting broadcast intents without proper validation can lead to security vulnerabilities, such as unauthorized access or execution of sensitive actions by malicious apps.",
+            "mitigation": "Ensure that broadcast intents are transmitted securely and only to trusted components. Validate and sanitize input data before broadcasting intents.",
+            "article": "android/broadcast-intent-transmission",
+            "default_severity": "Medium",
+            "meta_cvss": "3.0",
+            "meta_cwe": "CWE-200",
+            "meta_masvs": "MASVS:2.0.1-M3"
+        },
+        {
+            "title": "TCP Server Sockets",
+            "description": "The app uses TCP server sockets without proper security measures.",
+            "risk": "Using TCP server sockets without proper security measures can expose sensitive data and create potential security vulnerabilities.",
+            "mitigation": "Ensure that TCP server sockets are implemented securely, including appropriate authentication, encryption, and input validation.",
+            "article": "android/tcp-server-sockets",
+            "default_severity": "Medium",
+            "meta_cvss": "3.0",
+            "meta_cwe": "CWE-319",
+            "meta_masvs": "MASVS:2.0.1-M10: \"Server-side Injection Verification\""
+        },
+        {
+            "title": "Weak Cryptographic Hashing Algorithms",
+            "description": "The app uses weak cryptographic hashing algorithms for data integrity or password storage.",
+            "risk": "Weak cryptographic hashing algorithms can be susceptible to various attacks, including brute-force attacks and rainbow table attacks. This can compromise data integrity and expose user passwords to potential decryption.",
+            "mitigation": "Ensure that strong cryptographic hashing algorithms, such as SHA-256 or bcrypt, are used for data integrity checks and password storage. Avoid using weak hashing algorithms like MD5 or SHA-1.",
+            "article": "android/weak-cryptographic-hashing",
+            "default_severity": "High",
+            "meta_cvss": "3.0",
+            "meta_cwe": "CWE-327",
+            "meta_masvs": "MASVS:2.0.1-M5: \"Cryptography Verification\" and MASVS:2.0.1-M6: \"Tampering and Reverse Engineering Verification\""
+        },
+        {
+            "title": "Root Detection",
+            "description": "The app includes root detection mechanisms to identify if the device is rooted.",
+            "risk": "Using root detection as a security measure can create a false sense of security. It may not effectively protect the app against determined attackers and can lead to the exclusion of legitimate users.",
+            "mitigation": "Rely on robust security practices, such as secure API usage, secure data storage, and input validation, instead of relying solely on root detection mechanisms. Design the app to handle potential security threats without assuming that a rooted device is always malicious.",
+            "article": "android/root-detection",
+            "default_severity": "Low",
+            "meta_cvss": "3.0",
+            "meta_cwe": "CWE-693",
+            "meta_masvs": "MASVS:2.0.1-M3: \"Tampering and Reverse Engineering Verification\" and MASVS:2.0.1-M6: \"Tampering and Reverse Engineering Verification\""
+        },
+        {
+            "title": "Execution of Raw SQL Queries",
+            "description": "The app directly executes raw SQL queries without using parameterized queries or prepared statements.",
+            "risk": "Executing raw SQL queries without proper input validation and parameterization can lead to SQL injection vulnerabilities. Attackers may manipulate the queries to gain unauthorized access, modify or delete data, or perform other malicious actions.",
+            "mitigation": "Always use parameterized queries or prepared statements to handle user input in SQL queries. Avoid constructing queries by concatenating user input directly into the query string. Implement input validation and consider using an ORM (Object-Relational Mapping) framework to abstract the SQL queries and reduce the risk of SQL injection.",
+            "article": "android/raw-sql-queries",
+            "default_severity": "High",
+            "meta_cvss": "CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "meta_cwe": "CWE-89",
+            "meta_masvs": "MASVS:2.0.1-M1: \"System Design Verification\" and MASVS:2.0.1-M3: \"Tampering and Reverse Engineering Verification\""
+        },
+        {
+            "title": "Base-Config ClearText-Traffic Enabled",
+            "description": "The basic configuration in the `network_security_config.xml` of the Android app allows clear text traffic, which poses a security risk as sensitive data transmitted over the network can be intercepted and compromised.",
+            "risk": "Enabling clear text traffic increases the vulnerability of the app to man-in-the-middle attacks. Attackers can eavesdrop on network communications and potentially access sensitive information such as login credentials, personal data, or other confidential data.",
+            "mitigation": "To mitigate this risk, it is recommended to enforce the use of encrypted communication channels by configuring the `network_security_config.xml` to disallow clear text traffic.",
+            "article": "android/cleartext-traffic",
+            "default_severity": "High",
+            "meta_cvss": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "meta_cwe": "CWE-319",
+            "meta_masvs": "MASVS: 9.4"
+        },
+        {
+            "title": "Base-Config ClearText-Traffic Disabled",
+            "description": "The basic configuration in the `network_security_config.xml` of the Android app has disabled clear text traffic, which enhances the security of the app by enforcing the use of encrypted communication channels.",
+            "risk": "Disabling clear text traffic reduces the vulnerability of the app to man-in-the-middle attacks. Encrypted communication helps protect sensitive information transmitted over the network from interception and unauthorized access.",
+            "mitigation": "By configuring the `network_security_config.xml` to disallow clear text traffic, the app ensures that all network communications are encrypted, providing a higher level of security.",
+            "article": "android/cleartext-traffic",
+            "default_severity": "Secure",
+            "meta_cvss": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N",
+            "meta_cwe": "CWE-319",
+            "meta_masvs": "MASVS: 9.4"
+        },
+        {
+            "title": "Domain-Config ClearText-Traffic Disabled",
+            "description": "The `network_security_config` of the Android app has disabled clear text traffic on specific domains, providing a secure communication mechanism for those domains while allowing clear text traffic on other domains.",
+            "risk": "Disabling clear text traffic on specific domains reduces the vulnerability of the app to man-in-the-middle attacks for those domains. Encrypted communication is enforced, protecting sensitive information transmitted over the network on those domains from interception and unauthorized access. However, it's important to ensure that clear text traffic on other domains is properly secured.",
+            "mitigation": "By configuring the `network_security_config` to disable clear text traffic on specific domains, the app ensures that communication with those domains is encrypted. However, it's crucial to ensure that all other domains that require clear text traffic have additional security measures in place to protect sensitive information.",
+            "article": "android/cleartext-traffic",
+            "default_severity": "Secure",
+            "meta_cvss": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N",
+            "meta_cwe": "CWE-319",
+            "meta_masvs": "MASVS: 9.4"
+        },
+        {
+            "title": "Domain-Config ClearText-Traffic Enabled",
+            "description": "The `network_security_config` of the Android app allows clear text traffic only to specific domains, while enforcing encrypted communication for other domains per default.",
+            "risk": "Enabling clear text traffic to specific domains increases the vulnerability of the app to man-in-the-middle attacks for those domains. Attackers can potentially intercept and compromise sensitive information transmitted over the network to those domains. However, encrypted communication is still enforced for other domains, reducing the overall risk.",
+            "mitigation": "To mitigate the risk associated with enabling clear text traffic to specific domains, it is recommended to ensure that those domains are properly secured and additional security measures are implemented. Additionally, it is important to enforce encrypted communication for all other domains.",
+            "article": "android/cleartext-traffic",
+            "default_severity": "Medium",
+            "meta_cvss": "CVSS:5.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+            "meta_cwe": "CWE-319",
+            "meta_masvs": "MASVS: 9.4"
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+    ]
+}

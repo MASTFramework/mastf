@@ -21,7 +21,7 @@ the process of setting up a virtual environment on Linux, Mac, and Windows.
     .. code-block:: bash
         :caption: All platforms
 
-        git clone https://github.com/MAST-Framework/MAST-F.git && cd MAST-F
+        git clone https://github.com/MASTFramework/mastf.git && cd MAST-F
 
 2. Run the following command to create a new virtual environment:
 

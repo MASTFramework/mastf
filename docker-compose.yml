@@ -1,0 +1,125 @@
+version: '3.8'
+
+services:
+  # Web instance will run in a separate container and should establish
+  # connections to Redis and the backend DB while running.
+  web-django:
+    build:
+      context: ./
+      dockerfile: ./compose/local/django/Dockerfile
+
+    image: web_mastf_django
+    command: /start
+    env_file:
+      - ./.env
+
+    volumes:
+      - storage_data:/app_storage
+    expose:
+      - 8000
+
+    depends_on:
+      - redis
+      - backend-db
+
+    networks:
+      - frontend
+      - backend
+
+
+  # The backend database will be used to store all relevant data. There
+  # should be only one backend-db container running as it would result
+  # in data inconsistencies.
+  backend-db:
+    image: postgres:13.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env
+    networks:
+      - backend
+
+  redis:
+    image: redis:7-alpine
+    networks:
+      - backend
+
+  celery_worker:
+    build:
+      context: ./
+      args:
+        - ANDROID_SEMGREP_COMMIT_SHA=22caac9709f8915262be9af0548b3b1c478b560d
+      dockerfile: ./compose/local/django/celery/Dockerfile
+
+    image: mastf_celery_worker
+    command: /start_celery_worker
+    env_file:
+      - ./.env
+
+    volumes:
+      - storage_data:/app_storage
+
+    depends_on:
+      - redis
+      - backend-db
+
+    networks:
+      - backend
+
+
+  # This container is optional and can be used to register scheduled tasks
+  # that execute whithin a specific timeframe.
+  celery_beat:
+    build:
+      context: ./
+      dockerfile: ./compose/local/django/celery/Dockerfile
+
+    image: mastf_celery_beat
+    command: /start_celery_beat
+    env_file:
+      - ./.env
+
+    volumes:
+      - storage_data:/app_storage
+
+    depends_on:
+      - redis
+      - backend-db
+
+    networks:
+      - backend
+
+  # Our reverse proxy for handling requests (and serving static files)
+  nginx:
+    build: ./compose/local/nginx/
+    ports:
+      - 8080:80
+      - 8443:443
+    env_file:
+      - ./.env
+    environment:
+      NGINX_ENVSUBST_TEMPLATE_SUFFIX: ".conf"
+    depends_on:
+      - web-django
+    networks:
+      - frontend
+
+  # Swift server
+  swiftsrv:
+    build:
+      context: ./
+      dockerfile: ./compose/local/swiftsrv/Dockerfile
+    expose:
+      - 1289
+    env_file:
+      - ./.env
+    networks:
+      - backend
+
+volumes:
+  postgres_data: {}
+  storage_data: {}
+
+networks:
+  frontend:
+  backend:

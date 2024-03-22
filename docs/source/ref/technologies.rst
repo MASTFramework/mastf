@@ -59,7 +59,7 @@ his requirements.
       - Version
       - Usage
     * - `jQuery`_ + `jQuery DataTables`_
-      - ``3.6.4``, ``1.13.4``
+      - ``3.7.1``, ``1.13.4``
       - Table integration and HTML manipulation
     * - `jsTree`_
       - ``3.2.1``
