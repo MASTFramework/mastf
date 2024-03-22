@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # Scan models
 python3 ../manage.py graph_models -X TimedModel -I Snippet,FindingTemplate,Finding,Vulnerability -g -o source/ref/models/images/finding_models.png
