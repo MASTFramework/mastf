@@ -212,7 +212,8 @@ class AccountView(APIViewBase):
     permission_classes = [
         # Only authenticated users with permission to view or edit accounts
         # are allowed to make requests.
-        permissions.IsAuthenticated & (CanViewAccount | CanEditAccount)
+        permissions.IsAuthenticated
+        & (CanViewAccount | CanEditAccount)
     ]
     bound_permissions = [CanViewAccount]
 
@@ -225,7 +226,10 @@ class AccountView(APIViewBase):
                 # We now know that the user is an admin
                 admin_count = len(Account.objects.filter(role=Role.ADMIN))
                 if admin_count == 1 and instance.user == self.request.user:
-                    if data.get("role", "") != Role.ADMIN and instance.role == Role.ADMIN:
+                    if (
+                        data.get("role", "") != Role.ADMIN
+                        and instance.role == Role.ADMIN
+                    ):
                         raise exceptions.ValidationError(
                             (
                                 "You can't remove the 'ADMIN' role from the last admin account"

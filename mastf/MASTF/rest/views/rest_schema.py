@@ -9,7 +9,7 @@ __all__ = ["RestSchemaView"]
 RestSchemaView = get_schema_view(
     openapi.Info(
         title="MAST-F REST API",
-        default_version='v1',
+        default_version="v1",
         description="REST api documentation",
         license=openapi.License(name="GNU GPLv3"),
     ),

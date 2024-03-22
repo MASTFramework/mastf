@@ -12,9 +12,8 @@ from mastf.MASTF.models import Account, Environment
 
 from .base import APIViewBase, GetObjectMixin
 
-__all__ = [
-    'EnvironmentView'
-]
+__all__ = ["EnvironmentView"]
+
 
 class EnvironmentView(APIViewBase):
     model = Environment

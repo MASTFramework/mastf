@@ -42,6 +42,7 @@ __all__ = [
     "AdminEnvironmentConfig",
 ]
 
+
 class SettingsMixin:
     def is_admin(self, user: User) -> bool:
         return Account.objects.get(user=user).role == Role.ADMIN or user.is_staff

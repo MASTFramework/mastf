@@ -29,7 +29,15 @@ from mastf.MASTF.utils.enum import Severity
 
 from .base import Project, File, Team, TimedModel
 
-__all__ = ["Scan", "Scanner", "ScanTask", "Details", "Certificate", "DeveloperInfo", "StoreInfo"]
+__all__ = [
+    "Scan",
+    "Scanner",
+    "ScanTask",
+    "Details",
+    "Certificate",
+    "DeveloperInfo",
+    "StoreInfo",
+]
 
 logger = logging.getLogger(__name__)
 
@@ -235,7 +243,7 @@ class ScanTask(TimedModel):
         tasks = ScanTask.active_tasks(scan)
         if len(tasks) == 0 or (len(tasks) == 1 and tasks[0] == task):
             scan.is_active = False
-            scan.status = "Done" # TODO: change to enum value
+            scan.status = "Done"  # TODO: change to enum value
             scan.save()
 
 

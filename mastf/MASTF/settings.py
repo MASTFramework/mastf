@@ -6,6 +6,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+
 import os
 import json
 import logging
@@ -31,7 +32,9 @@ try:
     SECRET_KEY = env["DJANGO_SECRET_KEY"]
 except KeyError as err:
     if DEBUG:
-        SECRET_KEY = "django-insecure-vgh0!k)t1(4$5gb+f*g#$&lqwx6k%dp+d!x8v%jh1ct9%y=q+a"
+        SECRET_KEY = (
+            "django-insecure-vgh0!k)t1(4$5gb+f*g#$&lqwx6k%dp+d!x8v%jh1ct9%y=q+a"
+        )
     else:
         raise RuntimeError(
             "Could not start due to invalid project settings: Please specify a "
@@ -51,11 +54,9 @@ if not MEDIA_ROOT:
 
 if not MEDIA_URL:
     if DEBUG:
-        MEDIA_URL = str(BASE_DIR) + '/'
+        MEDIA_URL = str(BASE_DIR) + "/"
     else:
-        raise RuntimeError(
-            "Could not find a valid MEDIA_URL setting."
-        )
+        raise RuntimeError("Could not find a valid MEDIA_URL setting.")
 
 ALLOWED_HOSTS = env.get("DJANGO_ALLOWED_HOSTS", "*").split(":")
 
@@ -75,7 +76,7 @@ INSTALLED_APPS = [
     "mastf.MASTF",
     "rest_framework",
     "django_celery_results",
-    "drf_yasg"
+    "drf_yasg",
 ]
 
 if DEBUG:
@@ -99,8 +100,8 @@ REST_FRAMEWORK = {
 
 ROOT_URLCONF = "mastf.MASTF.urls"
 GRAPH_MODELS = {
-  'all_applications': True,
-  'group_models': True,
+    "all_applications": True,
+    "group_models": True,
 }
 
 TEMPLATES = [
@@ -196,7 +197,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # -!- START MASTF-CONFIG -!-
 MASTF_PASSWD_MIN_LEN = 12
 MASTF_USERNAME_MIN_LEN = 3
-MASTF_FT_DIR = env.get("MASTF_FT_DIR", "") or str(BASE_DIR / "json" / "finding_templates")
+MASTF_FT_DIR = env.get("MASTF_FT_DIR", "") or str(
+    BASE_DIR / "json" / "finding_templates"
+)
 # -!- END MASTF-CONFIG -!-
 
 YARA_BASE_DIR = str(env.get("YARA_BASE_DIR", BASE_DIR / "yara"))
@@ -206,10 +209,12 @@ SEMGREP_ANDROID_RULES_DIR = SEMGREP_BASE_DIR / "android"
 SEMGREP_IOS_RULES_DIR = SEMGREP_BASE_DIR / "ios"
 
 LIBSOUT_PROFILES_DIR: str = env.get("LIBSCOUT_PROFILES_DIR", str(BASE_DIR / "profiles"))
-LIBSOUT_ANDROID_JAR: str = env.get("LIBSCOUT_ANDROID_JAR", str(BASE_DIR / "android.jar"))
+LIBSOUT_ANDROID_JAR: str = env.get(
+    "LIBSCOUT_ANDROID_JAR", str(BASE_DIR / "android.jar")
+)
 # -!- START USER-CONFIG -!-
 
-PROJECTS_ROOT = Path(MEDIA_ROOT) / 'projects'
+PROJECTS_ROOT = Path(MEDIA_ROOT) / "projects"
 if not PROJECTS_ROOT.exists():
     PROJECTS_ROOT.mkdir(exist_ok=True, parents=True)
 
@@ -291,10 +296,7 @@ LOGGING = {
             "level": "DEBUG",
             "propagate": False,
         },
-        "celery": {
-            "handlers": ["console", "logfile"],
-            "level": "DEBUG"
-        }
+        "celery": {"handlers": ["console", "logfile"], "level": "DEBUG"},
     },
 }
 

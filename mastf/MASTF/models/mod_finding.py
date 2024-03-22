@@ -292,12 +292,13 @@ class AbstractBaseFinding(TimedModel):
         return data
 
 
-class DataFlowItem():
+class DataFlowItem:
     # proposed for future analysis. Note that there won't be any migrations
     # related to this model as it is unused.
     position = models.IntegerField(default=0)
     source_node = models.TextField()
     sink_node = models.TextField()
+
 
 # Finding implementation
 class Finding(AbstractBaseFinding):

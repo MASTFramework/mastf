@@ -78,9 +78,7 @@ def get_file_checksum(fp: IOBase) -> tuple:
     return sha256.hexdigest(), sha1.hexdigest(), md5.hexdigest()
 
 
-def handle_scan_file_upload(
-    file: TemporaryUploadedFile, project: Project
-):
+def handle_scan_file_upload(file: TemporaryUploadedFile, project: Project):
     """Handles a generic file upload to the given project.
 
     :param file: the file to be saved
@@ -91,7 +89,9 @@ def handle_scan_file_upload(
     :rtype: :class:`File` | ``NoneType``
     """
     time_str = str(datetime.datetime.now())
-    internal_name = hashlib.md5(f"{file.name}_{time_str}".encode(errors="ignore")).hexdigest()
+    internal_name = hashlib.md5(
+        f"{file.name}_{time_str}".encode(errors="ignore")
+    ).hexdigest()
 
     suffix = f".{file.name.split('.')[-1]}" if "." in file.name else ""
     path = (
@@ -102,9 +102,10 @@ def handle_scan_file_upload(
         try:
             return File.objects.get(file_path=str(path))
         except (File.MultipleObjectsReturned, File.DoesNotExist):
-            pass # just override it (internal error)
+            pass  # just override it (internal error)
 
     return handle_file_upload(file, internal_name, str(path), save=True)
+
 
 def handle_file_upload(
     file: TemporaryUploadedFile, internal_name: str, path: str, save: bool = True

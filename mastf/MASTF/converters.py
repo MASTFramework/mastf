@@ -51,6 +51,7 @@ import sys
 
 class StringConverter:
     """Base class for string-based converters."""
+
     def to_python(self, value: str) -> str:
         return value
 

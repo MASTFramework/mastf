@@ -44,6 +44,7 @@ logger = logging.getLogger(__name__)
 
 __all__ = ["AppIconView", "ImageRenderer"]
 
+
 class ImageRenderer(BaseRenderer):
     media_type = "image/*"
     format = "png"
@@ -52,6 +53,7 @@ class ImageRenderer(BaseRenderer):
 
     def render(self, data, accepted_media_type=None, renderer_context=None):
         return data
+
 
 class AppIconView(GetObjectMixin, views.APIView):
     model = Scan

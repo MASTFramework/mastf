@@ -29,9 +29,11 @@ from .base import namespace, TimedModel
 
 __all__ = ["Component", "IntentFilter"]
 
+
 class IntentFilter(TimedModel):
     name = models.CharField(max_length=1024, blank=True)
     action = models.CharField(max_length=1024, blank=True)
+
 
 class Component(TimedModel):
     cid = models.CharField(max_length=256, primary_key=True)

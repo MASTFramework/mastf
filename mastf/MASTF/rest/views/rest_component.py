@@ -6,18 +6,14 @@ from mastf.MASTF.forms import ComponentForm
 
 from mastf.MASTF.rest.permissions import CanEditScanFromScanner, CanEditScan
 
-from .base import (
-    CreationAPIViewBase,
-    APIViewBase,
-    ListAPIViewBase,
-    GetObjectMixin
-)
+from .base import CreationAPIViewBase, APIViewBase, ListAPIViewBase, GetObjectMixin
 
 __all__ = [
-    'ComponentView',
-    'ComponentListView',
-    'ComponentCreationView',
+    "ComponentView",
+    "ComponentListView",
+    "ComponentCreationView",
 ]
+
 
 class ComponentView(APIViewBase):
     model = Component

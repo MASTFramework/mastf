@@ -23,6 +23,7 @@ __all__ = ["FindingCodeView", "VulnerabilityCodeView", "FiletreeView", "FileCode
 
 logger = logging.getLogger(__name__)
 
+
 class CodeView(views.APIView):
     authentication_classes = [
         authentication.BasicAuthentication,

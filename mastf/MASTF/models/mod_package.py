@@ -68,7 +68,8 @@ class Package(TimedModel):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=["group_id", "artifact_id"], name="unique_package_groupid_artifactid"
+                fields=["group_id", "artifact_id"],
+                name="unique_package_groupid_artifactid",
             )
         ]
 
@@ -148,14 +149,14 @@ class Dependency(TimedModel):
             elif vulnerability.version.startswith(">"):
                 upper_bound = vulnerability.version[1:].replace("=", "")
 
-            if ( # Check if this dependency's version matches the lower bound of the version range
+            if (  # Check if this dependency's version matches the lower bound of the version range
                 lower_bound is not None
                 and ("=" in vulnerability.version and self.version >= lower_bound)
                 or self.version > lower_bound
             ):
                 yield vulnerability
 
-            if ( # Check if this dependency's version matches the upper bound of the version range
+            if (  # Check if this dependency's version matches the upper bound of the version range
                 upper_bound is not None
                 and ("=" in vulnerability.version and self.version <= upper_bound)
                 or self.version < upper_bound

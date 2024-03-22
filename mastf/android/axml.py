@@ -253,6 +253,7 @@ class AXmlVisitor(metaclass=AXmlVisitorBase):
                 for handler in axml_element[attr_name]:
                     handler(element, attr_value, *self.args, **self.kwargs)
 
+
 class AndroidManifestVisitor(AXmlVisitor):
     """This class uses the features of the :class:`AXmlVisitorBase` to define
     nodes of the Android manifest.  The following code illustrates how

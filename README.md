@@ -14,11 +14,12 @@
 
 MAST-F is a comprehensive Mobile Application Security Testing Framework designed to test the security of iOS and Android mobile applications. It provides a wide range of tools and features to identify vulnerabilities and weaknesses in mobile apps, helping developers and security professionals ensure the robustness and integrity of their applications.
 
-> **This software is in *alpha* status and is NOT stable. It is intended for testing purposes only. Please use with caution and expect bugs and frequent changes.**
+> [!IMPORTANT]
+> This software is in *alpha* status and is NOT stable. It is intended for testing purposes only. Please use with caution and expect bugs and frequent changes.
 
 ## Documentation & Help
 
-The documentation for MAST-F is available on [Github-Pages](https://mast-framework.github.io/MAST-F/). It contains detailed information about the framework, its usage, configuration options, and various testing techniques. We highly recommend referring to the documentation to get started with MAST-F. Please visit the [Discussions](https://github.com/orgs/MAST-Framework/discussions) tab to ask questions or get help.
+The documentation for MAST-F is available on [Github-Pages](https://mastframework.github.io/MAST-F/). It contains detailed information about the framework, its usage, configuration options, and various testing techniques. We highly recommend referring to the documentation to get started with MAST-F. Please visit the [Discussions](https://github.com/orgs/MAST-Framework/discussions) tab to ask questions or get help.
 
 ## Key Features
 
@@ -52,7 +53,10 @@ The above diagram provides an overview of the MAST-F project architecture. It sh
 
 ## Setup
 
-To set up MAST-F, please follow the instructions provided in the documentation on [Github Pages](https://mast-framework.github.io/MAST-F/). The setup process involves configuring the required dependencies and performing necessary configurations before running the containers. You can find the setup commands and detailed guidelines on the documentation page.
+To set up MAST-F, please follow the instructions provided in the documentation on [Github Pages](https://mastframework.github.io/MAST-F/). The setup process involves configuring the required dependencies and performing necessary configurations before running the containers. You can find the setup commands and detailed guidelines on the documentation page. To simply run the containers, just execute
+```bash
+./bin/webui.sh [-d]
+```
 
 ## Contributing and Questions
 
@@ -64,4 +68,4 @@ If you discover any security vulnerabilities or issues in MAST-F, please report 
 
 ## License
 
-MAST-F is licensed under the GNU General Public License version 3 (GNU GPLv3). For more details, please refer to the [LICENSE](LICENSE) file in this repository.
+MAST-F is licensed under the MIT License. For more details, please refer to the [LICENSE](LICENSE) file in this repository.

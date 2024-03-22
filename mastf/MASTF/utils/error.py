@@ -20,6 +20,7 @@
 # SOFTWARE.
 from rest_framework.exceptions import APIException
 
+
 def get_error(error: APIException) -> str:
     detail = error.detail
 

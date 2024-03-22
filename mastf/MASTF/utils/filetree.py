@@ -62,9 +62,8 @@ import os
 
 from mastf.MASTF import settings
 
-__all__ = [
-    'apply_rules', 'visitor'
-]
+__all__ = ["apply_rules", "visitor"]
+
 
 class _Visitor:
     """Internal visitor class used to add the files internally.
@@ -102,28 +101,33 @@ class _Visitor:
         self.is_dir = is_dir
         self.clb = clb
 
+
 class _FileDesc(dict):
     """Internal wrapper class to create JSTree JSON data."""
 
-    def __init__(self, file: pathlib.Path, file_type: str, root_name: str, language: str=None):
+    def __init__(
+        self, file: pathlib.Path, file_type: str, root_name: str, language: str = None
+    ):
         super().__init__()
         path = file.as_posix()
 
-        self['text'] = file.name
-        self['type'] = file_type
-        self['li_attr'] = {
+        self["text"] = file.name
+        self["type"] = file_type
+        self["li_attr"] = {
             # The relative path is needed when fetching file information
             # and the directory indicator is used within the JavaScript
             # code.
-            "path": path[path.find(root_name):],
+            "path": path[path.find(root_name) :],
             "is-dir": file.is_dir(),
-            "file-type": file_type
+            "file-type": file_type,
         }
         if language:
-            self['li_attr']['language'] = language
+            self["li_attr"]["language"] = language
+
 
 __visitors__ = []
 """Internal visitor list storing all registered visitors."""
+
 
 def visitor(is_dir=False, suffix: str = r".*"):
     """Creates a new visitor by wrapping the underlying function
@@ -134,11 +138,14 @@ def visitor(is_dir=False, suffix: str = r".*"):
     :param suffix: pattern for files, defaults to ``r".*"``
     :type suffix: str, optional
     """
+
     def wrap(func):
         v = _Visitor(is_dir, re.compile(suffix) if suffix else None, func)
         __visitors__.append(v)
         return func
+
     return wrap
+
 
 def _do_visit(file: pathlib.Path, children: list, root_name: str) -> None:
     # Iterates over a list of registered visitor objects.
@@ -148,7 +155,7 @@ def _do_visit(file: pathlib.Path, children: list, root_name: str) -> None:
         matches = visitor.suffix and visitor.suffix.match(file.name)
         path = file.as_posix()
 
-        idx = path.find(root_name)+len(root_name)+1
+        idx = path.find(root_name) + len(root_name) + 1
         common = visitor.common_path and visitor.common_path.match(path[idx:])
         if visitor.is_dir and file.is_dir() and (matches or common):
             # If the file object matches the visitor's suffix or common path and the file
@@ -171,11 +178,12 @@ def _do_visit(file: pathlib.Path, children: list, root_name: str) -> None:
     file_type = "any_type" if not file.is_dir() else "folder"
     path = file.as_posix()
     package_prefix = f"{root_name}/src"
-    common = os.path.commonprefix([path[path.find(root_name):], package_prefix])
+    common = os.path.commonprefix([path[path.find(root_name) :], package_prefix])
     if common.startswith(package_prefix) and file.is_dir():
         file_type = "package"
 
     children.append(_FileDesc(file, file_type, root_name))
+
 
 def apply_rules(root: pathlib.Path, root_name: str) -> dict:
     """Applies loaded rules to the given file path.
@@ -200,27 +208,32 @@ def apply_rules(root: pathlib.Path, root_name: str) -> dict:
     tree = data.pop()
     # Sorted may be better
     children.sort(key=lambda x: x["text"])
-    tree['children'] = children
+    tree["children"] = children
     return tree
+
 
 ###############################################################################
 # DEFAULTS
 ###############################################################################
 
+
 class _DefaultVisitor(_Visitor):
-    def __init__(self, filetype: str, is_dir=False, suffix=r".*", language=None) -> None:
+    def __init__(
+        self, filetype: str, is_dir=False, suffix=r".*", language=None
+    ) -> None:
         super().__init__(is_dir, suffix, self.handle)
         self.filetype = filetype
-        self.language = language or 'text'
+        self.language = language or "text"
 
     def handle(self, file: pathlib.Path, children: list, root_name: str) -> None:
         children.append(_FileDesc(file, self.filetype, root_name, self.language))
 
+
 for filetype, obj in settings.FILE_RULES.items():
-    is_dir = obj.get('is_dir', False)
-    suffix = obj.get('suffix', None)
-    common_path = obj.get('common_path', None)
-    lang = obj.get('language', None)
+    is_dir = obj.get("is_dir", False)
+    suffix = obj.get("suffix", None)
+    common_path = obj.get("common_path", None)
+    lang = obj.get("language", None)
 
     v = _DefaultVisitor(filetype, is_dir, suffix, lang)
     v.common_path = re.compile(common_path) if common_path else None

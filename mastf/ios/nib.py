@@ -21,7 +21,8 @@
 import subprocess
 import pathlib
 
-__all__ = [ "convert_all" ]
+__all__ = ["convert_all"]
+
 
 # REVISIT: maybe move swift files into src/swift directory
 def convert_all(

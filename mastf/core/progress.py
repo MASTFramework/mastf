@@ -25,6 +25,7 @@ from celery.app.task import Task, states
 PROGRESS = "PROGRESS"
 logger = logging.getLogger(__name__)
 
+
 class Observer:
     """Represents an observer of a task.
 
@@ -56,7 +57,11 @@ class Observer:
     """
 
     def __init__(
-        self, task: Task, position: int = 0, scan_task=None, _logger: logging.Logger = None
+        self,
+        task: Task,
+        position: int = 0,
+        scan_task=None,
+        _logger: logging.Logger = None,
     ) -> None:
         self._task = task
         self._pos = abs(position) % 100
@@ -194,7 +199,12 @@ class Observer:
         """
         self._finish_scan_task()
         return self.update(
-            msg, *args, current=100, state=states.SUCCESS, do_log=True, log_level=logging.INFO
+            msg,
+            *args,
+            current=100,
+            state=states.SUCCESS,
+            do_log=True,
+            log_level=logging.INFO,
         )
 
     def fail(self, msg: str, exc_type=RuntimeError, *args) -> tuple:

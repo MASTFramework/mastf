@@ -20,13 +20,7 @@
 # SOFTWARE.
 from rest_framework import serializers
 
-from mastf.MASTF.models import (
-    Host,
-    DataCollectionGroup,
-    CipherSuite,
-    TLS,
-    HostTemplate
-)
+from mastf.MASTF.models import Host, DataCollectionGroup, CipherSuite, TLS, HostTemplate
 
 from .base import ManyToManyField, ManyToManySerializer
 

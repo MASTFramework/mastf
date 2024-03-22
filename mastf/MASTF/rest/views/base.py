@@ -119,7 +119,9 @@ class APIViewBase(GetObjectMixin, BoundPermissionsMixin, APIView):
             return Response(data.data)
 
         except permissions.exceptions.ValidationError as err:
-            return Response({"success": False, "detail": "".join([str(x) for x in err.detail])})
+            return Response(
+                {"success": False, "detail": "".join([str(x) for x in err.detail])}
+            )
 
     def patch(self, request: Request, *args, **kwargs) -> Response:
         """Updates the selected object.
@@ -152,7 +154,9 @@ class APIViewBase(GetObjectMixin, BoundPermissionsMixin, APIView):
                     return Response(serializer.errors)
 
         except permissions.exceptions.ValidationError as ve:
-            return Response({"success": False, "detail": "".join([str(x) for x in ve.detail])})
+            return Response(
+                {"success": False, "detail": "".join([str(x) for x in ve.detail])}
+            )
 
         except Exception as err:
             messages.error(self.request, str(err), str(err.__class__.__name__))
@@ -183,7 +187,9 @@ class APIViewBase(GetObjectMixin, BoundPermissionsMixin, APIView):
 
             instance.delete()
         except permissions.exceptions.ValidationError as ve:
-            return Response({"success": False, "detail": "".join([str(x) for x in ve.detail])})
+            return Response(
+                {"success": False, "detail": "".join([str(x) for x in ve.detail])}
+            )
 
         except Exception as err:
             messages.error(self.request, str(err), str(err.__class__.__name__))

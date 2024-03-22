@@ -62,7 +62,9 @@ def schedule_scan(scan: Scan, uploaded_file: File, names: list) -> None:
         scan.save()
         # The scan will be started whenever the right day is reached
         task_uuid = uuid.uuid4()
-        global_task = ScanTask(task_uuid=task_uuid, scan=scan, name="Scan Preparation Task")
+        global_task = ScanTask(
+            task_uuid=task_uuid, scan=scan, name="Scan Preparation Task"
+        )
         # The task must be saved before the preparation is executed
         global_task.save()
         logger.info("Started global scan task on %s", scan.pk)
@@ -75,7 +77,9 @@ def schedule_scan(scan: Scan, uploaded_file: File, names: list) -> None:
 @shared_task(bind=True)
 def prepare_scan(self, scan_task_id: str, selected_scanners: list) -> AsyncResult:
     task = ScanTask.objects.get(pk=scan_task_id)
-    logger.info("Scan Peparation: Setting up directories of scan %s", task.scan.scan_uuid)
+    logger.info(
+        "Scan Peparation: Setting up directories of scan %s", task.scan.scan_uuid
+    )
 
     observer = Observer(self, scan_task=task)
     scan = task.scan
@@ -153,9 +157,7 @@ def execute_scan(self, scan_uuid: str, plugin_name: str) -> AsyncResult:
 
         if isinstance(instance, Callable):
             rvalue = instance(task, observer)
-            _, meta = observer.success(
-                "[%s] Finished scanner task", plugin_name
-            )
+            _, meta = observer.success("[%s] Finished scanner task", plugin_name)
             ScanTask.finish_scan(scan, task)
             rvalue = rvalue or meta
             return rvalue

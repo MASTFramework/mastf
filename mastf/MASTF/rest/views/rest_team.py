@@ -14,15 +14,17 @@ from mastf.MASTF.permissions import CanEditTeam, CanDeleteTeam, CanViewTeam, Pat
 from .base import APIViewBase, ListAPIViewBase, CreationAPIViewBase, GetObjectMixin
 
 
-__all__ = [
-    'TeamView', 'TeamListView', 'TeamCreationView', 'TeamMemberView'
-]
+__all__ = ["TeamView", "TeamListView", "TeamCreationView", "TeamMemberView"]
+
 
 class TeamView(APIViewBase):
-    permission_classes = [permissions.IsAuthenticated & (CanViewTeam | CanEditTeam | CanDeleteTeam)]
+    permission_classes = [
+        permissions.IsAuthenticated & (CanViewTeam | CanEditTeam | CanDeleteTeam)
+    ]
     model = Team
     serializer_class = TeamSerializer
     bound_permissions = [CanEditTeam]
+
 
 class TeamListView(ListAPIViewBase):
     queryset = Team.objects.all()
@@ -30,7 +32,10 @@ class TeamListView(ListAPIViewBase):
     permission_classes = [permissions.IsAuthenticated & CanViewTeam]
 
     def filter_queryset(self, queryset: QuerySet) -> QuerySet:
-        return queryset.filter(Q(owner=self.request.user) | Q(users__pk=self.request.user.pk))
+        return queryset.filter(
+            Q(owner=self.request.user) | Q(users__pk=self.request.user.pk)
+        )
+
 
 class TeamCreationView(CreationAPIViewBase):
     model = Team
@@ -41,7 +46,9 @@ class TeamCreationView(CreationAPIViewBase):
     def post(self, request: Request) -> Response:
         if not Environment.env().allow_teams:
             messages.info(request, "Teams are disabled", "EnvironmentInfo")
-            return Response({'success': False}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+            return Response(
+                {"success": False}, status=status.HTTP_405_METHOD_NOT_ALLOWED
+            )
         return super().post(request)
 
     def set_defaults(self, request: Request, data: dict) -> None:
@@ -58,7 +65,7 @@ class TeamMemberView(GetObjectMixin, APIView):
     authentication_classes = [
         authentication.BasicAuthentication,
         authentication.SessionAuthentication,
-        authentication.TokenAuthentication
+        authentication.TokenAuthentication,
     ]
     model = Team
     permission_classes = [permissions.IsAuthenticated & (CanEditTeam | Patch)]
@@ -69,9 +76,9 @@ class TeamMemberView(GetObjectMixin, APIView):
         form = EditTeamMembersForm(data=request.data)
         valid = form.is_valid()
         if valid:
-            team.users.add(*form.cleaned_data['users'])
+            team.users.add(*form.cleaned_data["users"])
 
-        return Response({'success': valid})
+        return Response({"success": valid})
 
     def patch(self, request, *args, **kwargs):
         team: Team = self.get_object()
@@ -80,12 +87,13 @@ class TeamMemberView(GetObjectMixin, APIView):
         valid = form.is_valid()
         if valid:
             permission = CanEditTeam.get(team)
-            for user in form.cleaned_data['users']:
-                if user == self.request.user or (permission in self.request.user.user_permissions.all()):
+            for user in form.cleaned_data["users"]:
+                if user == self.request.user or (
+                    permission in self.request.user.user_permissions.all()
+                ):
                     team.users.remove(user)
                     CanViewTeam.remove_from(user, team)
                     CanEditTeam.remove_from(user, team)
                     CanDeleteTeam.remove_from(user, team)
 
-        return Response({'success': valid})
-
+        return Response({"success": valid})

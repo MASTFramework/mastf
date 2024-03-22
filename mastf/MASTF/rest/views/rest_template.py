@@ -12,9 +12,11 @@ from mastf.MASTF.rest.permissions import IsExternal
 from .base import APIViewBase, CreationAPIViewBase, ListAPIViewBase
 
 __all__ = [
-    'FindingTemplateView', 'FindingTemplateListView',
-    'FindingTemplateCreationView'
+    "FindingTemplateView",
+    "FindingTemplateListView",
+    "FindingTemplateCreationView",
 ]
+
 
 class FindingTemplateView(APIViewBase):
     """API-Endpoint for creating, managing and removing finding templates."""
@@ -22,7 +24,7 @@ class FindingTemplateView(APIViewBase):
     permission_classes = [permissions.IsAuthenticated]
 
     model = FindingTemplate
-    lookup_field = 'template_id'
+    lookup_field = "template_id"
     serializer_class = TemplateSerializer
 
 
@@ -35,7 +37,6 @@ class FindingTemplateCreationView(CreationAPIViewBase):
 
     def set_defaults(self, request: Request, data: dict) -> None:
         data["internal_id"] = sub(r"[\s_:]", "-", data.get("title")).lower()
-
 
     def make_uuid(self):
         return f"FT-{uuid4()}-{uuid4()}"

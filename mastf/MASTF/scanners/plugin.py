@@ -41,7 +41,7 @@ __all__ = [
 __scanners__ = {}
 
 
-def Plugin(clazz): # noqa
+def Plugin(clazz):  # noqa
     """
     Register a scanner plugin.
 
@@ -119,6 +119,7 @@ class Extension(StringEnum):
         The values of the extensions should not be modified as they are used
         internally by the system.
     """
+
     DETAILS = "details"
     PERMISSIONS = "permissions"
     HOSTS = "hosts"
@@ -209,10 +210,7 @@ class ScannerPluginTask(metaclass=ABCMeta):
             if name.startswith("do"):
                 name = "-".join([x.capitalize() for x in name.split("_")[1:]])
                 self.observer.update(
-                    "Started Sub-Task %s",
-                    name,
-                    do_log=True,
-                    log_level=logging.INFO
+                    "Started Sub-Task %s", name, do_log=True, log_level=logging.INFO
                 )
                 try:
                     func()

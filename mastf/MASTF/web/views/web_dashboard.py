@@ -165,6 +165,7 @@ class ProjectsView(VulnContextMixin, ContextMixinBase, TemplateAPIView):
                          page.
     :vartype template_name: str
     """
+
     template_name = "dashboard/projects.html"
 
     def post(self, request, *args, **kwargs):
@@ -251,6 +252,7 @@ class BundlesView(VulnContextMixin, ContextMixinBase, TemplateAPIView):
     :ivar template_name: The name of the HTML template used for rendering the bundles page.
     :vartype template_name: str
     """
+
     template_name = "dashboard/bundles.html"
 
     def get_context_data(self, **kwargs: dict) -> dict:
@@ -334,6 +336,7 @@ class PluginsView(ContextMixinBase, TemplateAPIView):
     :ivar permission_classes: The permission classes applied to the view.
     :vartype permission_classes: list
     """
+
     template_name = "plugins/plugins-base.html"
     permission_classes = [
         # External users should not be able to query data from internal

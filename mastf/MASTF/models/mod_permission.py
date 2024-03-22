@@ -79,7 +79,9 @@ class AppPermission(TimedModel):
         """
         plevel = {}
         colors = ProtectionLevel.colors()
-        for level in self.protection_level.split(AppPermission.PROTECTION_LEVEL_SEPARATOR):
+        for level in self.protection_level.split(
+            AppPermission.PROTECTION_LEVEL_SEPARATOR
+        ):
             found = False
             level = str(level).capitalize()
             for color, values in colors.items():
@@ -119,4 +121,3 @@ class PermissionFinding(AbstractBaseFinding):
 
     permission = models.ForeignKey(AppPermission, null=True, on_delete=models.SET_NULL)
     """A foreign key that associates a permission with a finding."""
-

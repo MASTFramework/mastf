@@ -68,14 +68,15 @@ def timestamp(obj: date):
 
     return mktime(obj.timetuple()) * 1000
 
+
 @register.filter(name="render_code")
 def render_code(text: str) -> str:
     output = ""
     count = 0
 
     for char in text:
-        if char == '`':
-            output = '%s<%skbd>' % (output, "/" if count % 2 != 0 else "")
+        if char == "`":
+            output = "%s<%skbd>" % (output, "/" if count % 2 != 0 else "")
             count += 1
         else:
             output = "".join([output, char])

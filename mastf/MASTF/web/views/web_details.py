@@ -40,19 +40,22 @@ class DetailsView(ContextMixinBase, TemplateAPIView):
         :return: A dictionary containing the context data.
         """
         context = super().get_context_data(**kwargs)
-        context['pages'] = ARTICLES
+        context["pages"] = ARTICLES
 
-        platform = self.kwargs['platform'].lower()
-        name = self.kwargs['name'].lower()
+        platform = self.kwargs["platform"].lower()
+        name = self.kwargs["name"].lower()
 
         path = DETAILS_DIR / platform / f"{name}.jsontx"
         if not path.exists():
-            messages.warning(self.request, f'Invalid details name: {path}', "FileNotFoundError")
+            messages.warning(
+                self.request, f"Invalid details name: {path}", "FileNotFoundError"
+            )
             return context
 
-
         if not os.path.commonprefix((path, DETAILS_DIR)).startswith(str(DETAILS_DIR)):
-            messages.warning(self.request, f'Invalid path name: {path}', "FileNotFoundError")
+            messages.warning(
+                self.request, f"Invalid path name: {path}", "FileNotFoundError"
+            )
             return context
 
         with open(str(path), "r", encoding="utf-8") as fp:

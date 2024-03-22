@@ -22,23 +22,25 @@ from __future__ import annotations
 
 from typing import Generator, Any
 
+
 def parse_name(full_name: str) -> tuple[str, str]:
     if not full_name:
         return None, None
 
-    if '::' in full_name: # group id :: artifact id
-        gid, aid = full_name.split('::')
+    if "::" in full_name:  # group id :: artifact id
+        gid, aid = full_name.split("::")
         return (gid, aid)
 
-    elif ':' in full_name: # group id : artifact id
-        gid, aid = full_name.split(':')
+    elif ":" in full_name:  # group id : artifact id
+        gid, aid = full_name.split(":")
         return (gid, aid)
 
-    elif '-' in full_name: # artifact id
+    elif "-" in full_name:  # artifact id
         return None, full_name
 
-    else: # only groupId
+    else:  # only groupId
         return full_name, None
+
 
 class TPL:
     def __init__(self, file_path: str) -> None:

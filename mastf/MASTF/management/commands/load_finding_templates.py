@@ -42,7 +42,9 @@ class Command(BaseCommand):
                 for template in templates:
                     self.import_data(template)
 
-                self.stdout.write(f"Ok ({self.created} newly created, {self.updated} updated)\n\n")
+                self.stdout.write(
+                    f"Ok ({self.created} newly created, {self.updated} updated)\n\n"
+                )
         except json.decoder.JSONDecodeError as err:
             self.stderr.write("  Could not import file: %s" % (str(err)))
             self.stderr.flush()
@@ -57,7 +59,9 @@ class Command(BaseCommand):
         )
 
         try:
-            template = FindingTemplate.objects.get(internal_id=template_data["internal_id"])
+            template = FindingTemplate.objects.get(
+                internal_id=template_data["internal_id"]
+            )
             updated = False
             for key, value in template_data.items():
                 if hasattr(template, key) and key not in ("template_id", "internal_id"):

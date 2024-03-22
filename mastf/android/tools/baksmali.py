@@ -72,7 +72,9 @@ def decompile(
         raise RuntimeError(err.stdout.decode()) from err
 
 
-def to_java(dex_dir: str, dex_path: str, dest_path: str, jadx_path: str, options: list = None) -> None:
+def to_java(
+    dex_dir: str, dex_path: str, dest_path: str, jadx_path: str, options: list = None
+) -> None:
     """Converts a dex file to Java source code using jadx.
 
     .. note::
@@ -95,7 +97,9 @@ def to_java(dex_dir: str, dex_path: str, dest_path: str, jadx_path: str, options
         jadx_path = f"{jadx_path}.bat"
 
     try:
-        cmd = f"cd {dex_dir} && {jadx_path} -d {dest_path} {getopts(options)} {dex_path}"
+        cmd = (
+            f"cd {dex_dir} && {jadx_path} -d {dest_path} {getopts(options)} {dex_path}"
+        )
         subprocess.run(
             f"{cmd} && mv -u {dest_path}/sources/* {dest_path} && rm -rf {dest_path}/sources",
             shell=True,

@@ -25,7 +25,7 @@ from mastf.MASTF.mixins import (
     VulnContextMixin,
     TemplateAPIView,
     TopVulnerableProjectsMixin,
-    )
+)
 from mastf.MASTF.models import (
     Bundle,
     Project,
@@ -40,8 +40,9 @@ from mastf.MASTF.permissions import CanViewBundle
 __all__ = ["BundleDetailsView"]
 
 
-class BundleDetailsView(ContextMixinBase, VulnContextMixin,
-                        TopVulnerableProjectsMixin, TemplateAPIView):
+class BundleDetailsView(
+    ContextMixinBase, VulnContextMixin, TopVulnerableProjectsMixin, TemplateAPIView
+):
     """A view for displaying details of a bundle, including projects and vulnerabilities."""
 
     template_name = "bundle/bundle-overview.html"
@@ -74,7 +75,9 @@ class BundleDetailsView(ContextMixinBase, VulnContextMixin,
         else:
             context["active"] = "tabs-overview"
             context.update(self._apply_bundle_overview(context["bundle"]))
-            context.update(self.get_top_vulnerable_projects(context["bundle"].projects.all()))
+            context.update(
+                self.get_top_vulnerable_projects(context["bundle"].projects.all())
+            )
 
         return context
 

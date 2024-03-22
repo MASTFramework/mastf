@@ -27,6 +27,7 @@ from caterpillar.shortcuts import unpack, pack
 SRV_HOST_ADDRESS = os.environ.get("SWIFTSRV_HOST", "0.0.0.0")
 SRV_PORT = os.environ.get("SWIFTSRV_PORT", 1298)
 
+
 class Connection:
     def __init__(self, connect=False) -> None:
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -55,7 +56,7 @@ class Connection:
 
         return response.payload.decode(errors="replace")
 
-    def connect(self, address = None) -> None:
+    def connect(self, address=None) -> None:
         self.sock.connect(address or (SRV_HOST_ADDRESS, SRV_PORT))
         self.is_connected = True
 

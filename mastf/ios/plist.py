@@ -25,6 +25,7 @@ import io
 
 __all__ = ["PropertyList"]
 
+
 class PropertyList(dict):
     """Wrapper class for iOS PropertyList (.plist) files."""
 

@@ -3,42 +3,24 @@ from rest_framework import permissions
 from mastf.MASTF.serializers import (
     PackageSerializer,
     PackageVulnerabilitySerializer,
-    DependencySerializer
+    DependencySerializer,
 )
-from mastf.MASTF.models import (
-    Package,
-    PackageVulnerability,
-    Dependency,
-    Project
-)
-from mastf.MASTF.forms import (
-    PackageForm,
-    PackageVulnerabilityForm,
-    DependencyForm
-)
-from mastf.MASTF.rest.permissions import (
-    IsScanProjectMember,
-    CanEditProject,
-    IsExternal
-)
+from mastf.MASTF.models import Package, PackageVulnerability, Dependency, Project
+from mastf.MASTF.forms import PackageForm, PackageVulnerabilityForm, DependencyForm
+from mastf.MASTF.rest.permissions import IsScanProjectMember, CanEditProject, IsExternal
 
-from .base import (
-    APIViewBase,
-    ListAPIViewBase,
-    CreationAPIViewBase,
-    GetObjectMixin
-)
+from .base import APIViewBase, ListAPIViewBase, CreationAPIViewBase, GetObjectMixin
 
 __all__ = [
-    'PackageView',
-    'PackageCreationView',
-    'PackageListView',
-    'PackageVulnerabilityView',
-    'PackageVulnerabilityCreationView',
-    'PackageVulnerabilityListView',
-    'DependencyView',
-    'DependencyListView',
-    'DependencyCreationView',
+    "PackageView",
+    "PackageCreationView",
+    "PackageListView",
+    "PackageVulnerabilityView",
+    "PackageVulnerabilityCreationView",
+    "PackageVulnerabilityListView",
+    "DependencyView",
+    "DependencyListView",
+    "DependencyCreationView",
 ]
 
 
@@ -47,16 +29,17 @@ class PackageView(APIViewBase):
     serializer_class = PackageSerializer
     permission_classes = [permissions.IsAuthenticated]
 
+
 class PackageCreationView(CreationAPIViewBase):
     model = Package
     form_class = PackageForm
     permission_classes = [permissions.IsAuthenticated]
 
+
 class PackageListView(ListAPIViewBase):
     permission_classes = [permissions.IsAuthenticated]
     queryset = Package.objects.all()
     serializer_class = PackageSerializer
-
 
 
 # PackageVulnerability
@@ -65,10 +48,12 @@ class PackageVulnerabilityView(APIViewBase):
     serializer_class = PackageVulnerabilitySerializer
     permission_classes = [permissions.IsAuthenticated & ~IsExternal]
 
+
 class PackageVulnerabilityCreationView(CreationAPIViewBase):
     model = PackageVulnerability
     form_class = PackageVulnerabilityForm
     permission_classes = [permissions.IsAuthenticated & ~IsExternal]
+
 
 class PackageVulnerabilityListView(GetObjectMixin, ListAPIViewBase):
     permission_classes = [permissions.IsAuthenticated & ~IsExternal]
@@ -84,21 +69,24 @@ class PackageVulnerabilityListView(GetObjectMixin, ListAPIViewBase):
             queryset = queryset.filter(version=version)
         return queryset
 
+
 # Dependencies
 class DependencyView(APIViewBase):
     model = Dependency
     serializer_class = DependencySerializer
     permission_classes = [permissions.IsAuthenticated & IsScanProjectMember]
 
+
 class DependencyListView(GetObjectMixin, ListAPIViewBase):
     queryset = Dependency.objects.all()
     serializer_class = DependencySerializer
     model = Project
-    lookup_field = 'project_uuid'
+    lookup_field = "project_uuid"
     permission_classes = [permissions.IsAuthenticated & CanEditProject]
 
     def filter_queryset(self, queryset):
         return queryset.filter(project=self.get_object())
+
 
 class DependencyCreationView(CreationAPIViewBase):
     model = Dependency
@@ -110,4 +98,4 @@ class DependencyCreationView(CreationAPIViewBase):
 
     def set_defaults(self, request, data: dict) -> None:
         # Check object permissions to create a new dependency
-        self.check_object_permissions(request, data['project'])
+        self.check_object_permissions(request, data["project"])

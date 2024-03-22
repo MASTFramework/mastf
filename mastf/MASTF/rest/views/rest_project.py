@@ -3,13 +3,7 @@ from shutil import rmtree
 from django.db.models import Q, QuerySet
 from django.contrib.auth.models import User
 
-from rest_framework import (
-    permissions,
-    views,
-    authentication,
-    status,
-    exceptions
-)
+from rest_framework import permissions, views, authentication, status, exceptions
 from rest_framework.request import Request
 from rest_framework.response import Response
 
@@ -18,27 +12,13 @@ from mastf.MASTF.utils.enum import Visibility
 from mastf.MASTF.scanners.plugin import ScannerPlugin
 from mastf.MASTF.permissions import CanEditProject, CanDeleteProject
 from mastf.MASTF.serializers import ProjectSerializer, TeamSerializer, UserSerializer
-from mastf.MASTF.models import (
-    Project,
-    Scan,
-    Finding,
-    Vulnerability,
-    Scanner,
-    Team
-)
+from mastf.MASTF.models import Project, Scan, Finding, Vulnerability, Scanner, Team
 from mastf.MASTF.forms import ProjectCreationForm
 
-from .base import (
-    ListAPIViewBase,
-    APIViewBase,
-    CreationAPIViewBase,
-    GetObjectMixin
-)
+from .base import ListAPIViewBase, APIViewBase, CreationAPIViewBase, GetObjectMixin
 
-__all__ = [
-    'ProjectView', 'ProjectCreationView', 'ProjectListView',
-    'ProjectChartView'
-]
+__all__ = ["ProjectView", "ProjectCreationView", "ProjectListView", "ProjectChartView"]
+
 
 class ProjectView(APIViewBase):
     """API-Endpoint designed to create, manage and delete projects.
@@ -52,13 +32,14 @@ class ProjectView(APIViewBase):
 
     permission_classes = [
         # The user has to be authenticated
-        permissions.IsAuthenticated & (CanEditProject | CanDeleteProject)
+        permissions.IsAuthenticated
+        & (CanEditProject | CanDeleteProject)
     ]
     bound_permissions = [CanDeleteProject, CanEditProject]
 
     model = Project
     serializer_class = ProjectSerializer
-    lookup_field = 'project_uuid'
+    lookup_field = "project_uuid"
 
     def prepare_patch(self, data: dict, instance):
         if "owner" in data:
@@ -68,15 +49,15 @@ class ProjectView(APIViewBase):
                 if isinstance(new_owner, (str, int)):
                     new_owner = User.objects.get(pk=int(new_owner))
             except Exception as err:
-                raise exceptions.ValidationError("Could not find user with provided ID") from err
+                raise exceptions.ValidationError(
+                    "Could not find user with provided ID"
+                ) from err
 
             if isinstance(new_owner, User):
                 CanDeleteProject.assign_to(new_owner, instance.pk)
                 CanEditProject.assign_to(new_owner, instance.pk)
                 CanDeleteProject.remove_from(instance.owner, instance)
                 CanEditProject.remove_from(instance.owner, instance)
-
-
 
     def on_delete(self, request: Request, obj) -> None:
         rmtree(settings.PROJECTS_ROOT / str(obj.project_uuid))
@@ -95,12 +76,12 @@ class ProjectCreationView(CreationAPIViewBase):
         path.mkdir()
 
     def set_defaults(self, request: Request, data: dict) -> None:
-        team_name = data.pop('team_name', None)
+        team_name = data.pop("team_name", None)
         if team_name:
-            data['team'] = Team.get(request.user, team_name)
+            data["team"] = Team.get(request.user, team_name)
 
-        if not data.get('team', None):
-            data['owner'] = request.user
+        if not data.get("team", None):
+            data["owner"] = request.user
 
 
 class ProjectListView(ListAPIViewBase):
@@ -111,13 +92,13 @@ class ProjectListView(ListAPIViewBase):
 
     serializer_class = ProjectSerializer
     # The user must be the owner or the project must be public
-    permission_classes = [
-        permissions.IsAuthenticated & CanEditProject
-    ]
+    permission_classes = [permissions.IsAuthenticated & CanEditProject]
 
     def filter_queryset(self, queryset: QuerySet) -> QuerySet:
-        return queryset.filter(Q(owner=self.request.user)
-            | Q(team__users__pk=self.request.user) | Q(visibility=Visibility.PUBLIC, team=None)
+        return queryset.filter(
+            Q(owner=self.request.user)
+            | Q(team__users__pk=self.request.user)
+            | Q(visibility=Visibility.PUBLIC, team=None)
         )
 
 
@@ -125,13 +106,13 @@ class ProjectChartView(GetObjectMixin, views.APIView):
     authentication_classes = [
         authentication.BasicAuthentication,
         authentication.SessionAuthentication,
-        authentication.TokenAuthentication
+        authentication.TokenAuthentication,
     ]
 
     permission_classes = [permissions.IsAuthenticated & CanEditProject]
 
     model = Project
-    lookup_field = 'project_uuid'
+    lookup_field = "project_uuid"
 
     def get(self, request: Request, *args, **kwargs) -> Response:
         """Generates a timeline for all vulnerabilities and findings of a project.
@@ -142,7 +123,7 @@ class ProjectChartView(GetObjectMixin, views.APIView):
         :rtype: Response
         """
         project = self.get_object()
-        name = self.kwargs['name']
+        name = self.kwargs["name"]
         if not hasattr(self, f"chart_{name}"):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -154,8 +135,8 @@ class ProjectChartView(GetObjectMixin, views.APIView):
         data = {}
         for scan in Scan.objects.filter(project=project):
             data[str(scan.start_date)] = {
-                'vuln_count': len(Vulnerability.objects.filter(scan=scan)),
-                'finding_count': len(Finding.objects.filter(scan=scan))
+                "vuln_count": len(Vulnerability.objects.filter(scan=scan)),
+                "finding_count": len(Finding.objects.filter(scan=scan)),
             }
         return data
 
@@ -164,6 +145,8 @@ class ProjectChartView(GetObjectMixin, views.APIView):
         plugins = ScannerPlugin.all()
         for scanner in Scanner.objects.filter(scan__project=project):
             name = plugins[scanner.name].title
-            data[name] = len(Finding.objects.filter(scan__project=project, scanner=scanner))
+            data[name] = len(
+                Finding.objects.filter(scan__project=project, scanner=scanner)
+            )
 
         return data

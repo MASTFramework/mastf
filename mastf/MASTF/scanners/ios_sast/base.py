@@ -131,7 +131,7 @@ def get_app_packages(task: ScannerPluginTask) -> None:
                 continue  # maybe create new entry
 
         elif file_path.name == "cordova_plugins.js":
-            try: # Cordova plugins
+            try:  # Cordova plugins
                 metadata = cordova.get_cordova_metadata(str(file_path))
                 if metadata:
                     for name, version in metadata.items():
@@ -144,13 +144,15 @@ def get_app_packages(task: ScannerPluginTask) -> None:
                 logger.exception(str(err))
 
         elif str(file_path).endswith("public/dependencies.json"):
-            try: # Cordova dependencies
+            try:  # Cordova dependencies
                 with open(str(file_path), "r", encoding="utf-8") as fp:
                     for framework in json.load(fp):
                         package = Package.objects.get(name=framework["name"])
                         if package not in dependencies:
                             dependencies[package] = Dependency(
-                                pk=uuid.uuid4(), package=package, version=framework["version"]
+                                pk=uuid.uuid4(),
+                                package=package,
+                                version=framework["version"],
                             )
             except Exception as err:
                 logger.exception(str(err))
