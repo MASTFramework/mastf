@@ -2,11 +2,11 @@
 
 [![python](https://img.shields.io/badge/python-3.12+-blue.svg?logo=python&labelColor=grey)](https://www.python.org/downloads/)
 ![Version](https://img.shields.io:/static/v1?label=Version&message=2024.1+(0.0.2-a0)&color=teal)
-![Status](https://img.shields.io:/static/v1?label=Status&message=Alpha&color=lightgrey)
 ![Platform](https://img.shields.io:/static/v1?label=Docker&message=v23.0.5&color=blue&logo=docker)
 ![Codestyle](https://img.shields.io:/static/v1?label=Codestyle&message=black&color=black)
-![License](https://img.shields.io:/static/v1?label=License&message=GNU-GPLv3&color=blue)
-[![pages-build-deployment](https://github.com/MASTFramework/mastf/actions/workflows/pages/pages-build-deployment/badge.svg)](https://mast-framework.github.io/MAST-F/)
+[![Build and Deploy Docs](https://github.com/MASTFramework/mastf/actions/workflows/python-sphinx.yml/badge.svg)](https://github.com/MASTFramework/mastf/actions/workflows/python-sphinx.yml)
+![GitHub issues](https://img.shields.io/github/issues/MASTFramework/mastf?logo=github)
+![GitHub License](https://img.shields.io/github/license/MASTFramework/.github?logo=github)
 
 <a href="https://github.com/MASTFramework">
 <img src="https://github.com/MASTFramework/.github/blob/master/profile/logo.svg" alt="" height="180px" align="right" />
