@@ -22,7 +22,6 @@ from __future__ import annotations
 
 from typing import Generator, Any
 
-
 def parse_name(full_name: str) -> tuple[str, str]:
     if not full_name:
         return None, None
@@ -31,15 +30,15 @@ def parse_name(full_name: str) -> tuple[str, str]:
         gid, aid = full_name.split("::")
         return (gid, aid)
 
-    elif ":" in full_name:  # group id : artifact id
+    if ":" in full_name:  # group id : artifact id
         gid, aid = full_name.split(":")
         return (gid, aid)
 
-    elif "-" in full_name:  # artifact id
+    if "-" in full_name:  # artifact id
         return None, full_name
 
-    else:  # only groupId
-        return full_name, None
+    # only groupId
+    return full_name, None
 
 
 class TPL:

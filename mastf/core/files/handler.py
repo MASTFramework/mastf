@@ -206,6 +206,8 @@ def apk_handler(src_path: pathlib.Path, dest_dir: pathlib.Path, settings, **kwar
     if observer:
         observer.update("Extracting APK file with apktool...")
 
+    # TODO: move to apkInspector as apktool may not be able to extract
+    # all resources
     apktool.extractrsc(str(src_path), str(contents), settings.APKTOOL)
     smali_dir = src / "smali"
     smali_dir.mkdir(exist_ok=True)
@@ -218,8 +220,10 @@ def apk_handler(src_path: pathlib.Path, dest_dir: pathlib.Path, settings, **kwar
     dex_files = list(contents.glob(r"*/**/*.dex")) + list(contents.glob(r"*.dex"))
     for path in dex_files:
         logger.debug(
-            "Decompiling classes with %s: classes=%s -> to=%s"
-            % (tool, str(path), str(smali_dir))
+            "Decompiling classes with %s: classes=%s -> to=%s",
+            tool,
+            str(path),
+            str(smali_dir),
         )
         if observer:
             observer.update("Decompiling %s with %s to /src/smali", path.name, tool)

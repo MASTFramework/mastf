@@ -56,7 +56,7 @@ if [[ -z "${VIRTUAL_ENV}" ]]; then
         exit 1
     fi
 else
-    printf "[+] python venv already activate or run without venv:\n   @: ${VIRTUAL_ENV}\n"
+    printf "[+] python venv already active or run without venv:\n   @: ${VIRTUAL_ENV}\n"
 fi
 
 cd "${install_dir}"/ || { printf "\e[1m\e[31mERROR: Can't cd to %s/, aborting...\e[0m\n" "${install_dir}"; exit 1; }

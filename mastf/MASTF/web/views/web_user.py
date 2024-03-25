@@ -89,6 +89,9 @@ class RegstrationView(TemplateView):
         if result.status_code == 409:
             messages.error(request, "Username already present or password too short")
 
+        if result.status_code == 405:
+            messages.error(request, "Registration not allowed")
+
         return redirect("User-Registration")
 
 

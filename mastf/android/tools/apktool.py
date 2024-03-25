@@ -23,7 +23,9 @@ Support for apktool to be called within Python code. Use this module
 to extract sources or resources separately or extract an APK file
 completely.
 """
+import os
 import subprocess
+import apkInspector
 
 
 def extractrsc(apk_path: str, dest_path: str, apktool_path: str = "apktool") -> None:
@@ -79,3 +81,21 @@ def run_apktool_decode(
     except subprocess.CalledProcessError as err:
         # Raise a RuntimeError if apktool fails to decode the APK file
         raise RuntimeError(err.stdout.decode()) from err
+
+
+def apkinspector_extract(apk: apkInspector.headers.ZipEntry, dest_path: str) -> None:
+    cd = apk.central_directory
+    lh = apk.local_headers
+    error = apkInspector.extract.extract_all_files_from_central_directory(
+        apk, cd, lh, dest_path
+    )
+    if error != 0:
+        raise RuntimeError(f"Failed to extract files from APK. error={error}")
+
+    # convert manifest file
+    manifest_file = os.path.join(dest_path, "AndroidManifest.xml")
+    with open(manifest_file, "rb") as f:
+        xml_data = f.read()
+
+    with open(manifest_file, "w", encoding="utf-8") as f:
+        f.write(apkInspector.axml.get_manifest(xml_data))
