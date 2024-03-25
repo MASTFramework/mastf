@@ -653,11 +653,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../android_api/tools.html">Android Tools</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../../android_api/tools.html#module-mastf.android.tools.apktool">Apktool</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../android_api/tools.html#mastf.android.tools.apktool.run_apktool_decode"><code class="docutils literal notranslate"><span class="pre">run_apktool_decode()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../android_api/tools.html#mastf.android.tools.apktool.extractrsc"><code class="docutils literal notranslate"><span class="pre">extractrsc()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../android_api/tools.html#apktool">Apktool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../android_api/tools.html#module-mastf.android.tools.baksmali">Baksmali</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../android_api/tools.html#mastf.android.tools.baksmali.decompile"><code class="docutils literal notranslate"><span class="pre">decompile()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../android_api/tools.html#mastf.android.tools.baksmali.to_java"><code class="docutils literal notranslate"><span class="pre">to_java()</span></code></a></li>
@@ -909,6 +905,8 @@
     <span class="k">if</span> <span class="n">observer</span><span class="p">:</span>
         <span class="n">observer</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;Extracting APK file with apktool...&quot;</span><span class="p">)</span>
 
+    <span class="c1"># TODO: move to apkInspector as apktool may not be able to extract</span>
+    <span class="c1"># all resources</span>
     <span class="n">apktool</span><span class="o">.</span><span class="n">extractrsc</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">src_path</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">contents</span><span class="p">),</span> <span class="n">settings</span><span class="o">.</span><span class="n">APKTOOL</span><span class="p">)</span>
     <span class="n">smali_dir</span> <span class="o">=</span> <span class="n">src</span> <span class="o">/</span> <span class="s2">&quot;smali&quot;</span>
     <span class="n">smali_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -921,8 +919,10 @@
     <span class="n">dex_files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">contents</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;*/**/*.dex&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">contents</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;*.dex&quot;</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">dex_files</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
-            <span class="s2">&quot;Decompiling classes with </span><span class="si">%s</span><span class="s2">: classes=</span><span class="si">%s</span><span class="s2"> -&gt; to=</span><span class="si">%s</span><span class="s2">&quot;</span>
-            <span class="o">%</span> <span class="p">(</span><span class="n">tool</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">smali_dir</span><span class="p">))</span>
+            <span class="s2">&quot;Decompiling classes with </span><span class="si">%s</span><span class="s2">: classes=</span><span class="si">%s</span><span class="s2"> -&gt; to=</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">tool</span><span class="p">,</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">smali_dir</span><span class="p">),</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="n">observer</span><span class="p">:</span>
             <span class="n">observer</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;Decompiling </span><span class="si">%s</span><span class="s2"> with </span><span class="si">%s</span><span class="s2"> to /src/smali&quot;</span><span class="p">,</span> <span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">tool</span><span class="p">)</span>

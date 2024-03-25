@@ -655,11 +655,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Android Tools</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-mastf.android.tools.apktool">Apktool</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#mastf.android.tools.apktool.run_apktool_decode"><code class="docutils literal notranslate"><span class="pre">run_apktool_decode()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mastf.android.tools.apktool.extractrsc"><code class="docutils literal notranslate"><span class="pre">extractrsc()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#apktool">Apktool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-mastf.android.tools.baksmali">Baksmali</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#mastf.android.tools.baksmali.decompile"><code class="docutils literal notranslate"><span class="pre">decompile()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mastf.android.tools.baksmali.to_java"><code class="docutils literal notranslate"><span class="pre">to_java()</span></code></a></li>
@@ -695,47 +691,8 @@
              
   <section id="android-tools">
 <span id="android-api-tools"></span><h1>Android Tools<a class="headerlink" href="#android-tools" title="Link to this heading"></a></h1>
-<section id="module-mastf.android.tools.apktool">
-<span id="apktool"></span><h2>Apktool<a class="headerlink" href="#module-mastf.android.tools.apktool" title="Link to this heading"></a></h2>
-<p>Support for apktool to be called within Python code. Use this module
-to extract sources or resources separately or extract an APK file
-completely.</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="mastf.android.tools.apktool.run_apktool_decode">
-<span class="sig-prename descclassname"><span class="pre">mastf.android.tools.apktool.</span></span><span class="sig-name descname"><span class="pre">run_apktool_decode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">apk_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apktool_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'apktool'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sources</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resources</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/mastf/android/tools/apktool.html#run_apktool_decode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mastf.android.tools.apktool.run_apktool_decode" title="Link to this definition"></a></dt>
-<dd><p>Decodes the specified APK file using apktool.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>apk_path</strong> (<em>str</em>) – The path to the APK file to decode.</p></li>
-<li><p><strong>dest_path</strong> (<em>str</em>) – The path to the directory where the decoded files will be placed.</p></li>
-<li><p><strong>apktool_path</strong> (<em>str</em><em>, </em><em>optional</em>) – The path to the apktool executable. Defaults to “apktool”.</p></li>
-<li><p><strong>force</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to force overwrite existing files. Defaults to True.</p></li>
-<li><p><strong>sources</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to decode sources. Defaults to True.</p></li>
-<li><p><strong>resources</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to decode resources. Defaults to True.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>RuntimeError</strong> – If apktool fails to decode the APK file.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="mastf.android.tools.apktool.extractrsc">
-<span class="sig-prename descclassname"><span class="pre">mastf.android.tools.apktool.</span></span><span class="sig-name descname"><span class="pre">extractrsc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">apk_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apktool_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'apktool'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/mastf/android/tools/apktool.html#extractrsc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mastf.android.tools.apktool.extractrsc" title="Link to this definition"></a></dt>
-<dd><p>Extracts only resources from an APK file.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>apk_path</strong> (<em>str</em>) – The path to the APK file to decode.</p></li>
-<li><p><strong>dest_path</strong> (<em>str</em>) – The path to the directory where the decoded files will be placed.</p></li>
-<li><p><strong>apktool_path</strong> (<em>str</em><em>, </em><em>optional</em>) – The path to the apktool executable. Defaults to “apktool”.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
+<section id="apktool">
+<h2>Apktool<a class="headerlink" href="#apktool" title="Link to this heading"></a></h2>
 </section>
 <section id="module-mastf.android.tools.baksmali">
 <span id="baksmali"></span><h2>Baksmali<a class="headerlink" href="#module-mastf.android.tools.baksmali" title="Link to this heading"></a></h2>
